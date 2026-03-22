@@ -6,6 +6,41 @@
 
 HTML + CSS + JavaScript で構成されており、ブラウザで即プレビュー可能。Claude Code のスキルとしても動作する。
 
+## スクリーンショット
+
+### タイトル / COI開示
+<p>
+<img src="screenshots/01-title.png" width="400"> <img src="screenshots/02-coi.png" width="400">
+</p>
+
+### 学会口演（CONSORT / Forest Plot / Kaplan-Meier）
+<p>
+<img src="screenshots/07-consort.png" width="260"> <img src="screenshots/09-forest-plot.png" width="260"> <img src="screenshots/10-kaplan-meier.png" width="260">
+</p>
+
+### 学会口演（Table 1 / PRISMA）
+<p>
+<img src="screenshots/06-table1.png" width="400"> <img src="screenshots/08-prisma.png" width="400">
+</p>
+
+### 抄読会（PICO / バイアスリスク RoB2）
+<p>
+<img src="screenshots/15-pico.png" width="400"> <img src="screenshots/16-rob2.png" width="400">
+</p>
+
+### 症例報告（バイタル / 検査値 / 鑑別診断 / 臨床経過図）
+<p>
+<img src="screenshots/21-vital-signs.png" width="400"> <img src="screenshots/22-lab-results.png" width="400">
+</p>
+<p>
+<img src="screenshots/23-ddx.png" width="400"> <img src="screenshots/24-clinical-course.png" width="400">
+</p>
+
+### 教育講演（クイズ / 診断アルゴリズム）
+<p>
+<img src="screenshots/50-quiz.png" width="400"> <img src="screenshots/51-algorithm.png" width="400">
+</p>
+
 ## なぜ作ったか
 
 医学発表のスライドには、一般的なプレゼンテーションにはない独自の要素がある。COI開示、倫理審査情報、CONSORT図、Forest Plot、PRISMA図、Kaplan-Meier曲線、PICO表、バイアスリスク評価、GRADE、臨床経過図。これらは学会や抄読会で毎回必要になるのに、テンプレートとして整備されたものがほとんどない。
