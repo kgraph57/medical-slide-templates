@@ -72,12 +72,10 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-
 .slide-title h1 { max-width: 900px; }
 .slide-title .sub { font-size: var(--text-lg); color: var(--color-muted); max-width: 680px; line-height: 1.6; }
 
-/* ── コンテンツスライド（見出し上固定・本体中央寄せ） ── */
+/* ── コンテンツスライド（タイトル直下から上揃えで流す。中央フロートを廃し余白を均一化） ── */
 .slide-content { gap: var(--sp-lg); }
-.slide-content .body { display: flex; flex-direction: column; gap: var(--sp-md); flex: 1; }
+.slide-content .body { display: flex; flex-direction: column; gap: var(--sp-md); flex: 1; justify-content: flex-start; }
 .slide-content .body > h2 { flex-shrink: 0; padding-bottom: var(--sp-sm); border-bottom: 1px solid var(--color-border); }
-.slide-content .body > h2 + * { margin-top: auto; }
-.slide-content .body > *:last-child { margin-bottom: auto; }
 
 /* ── ランディング（大命題） ── */
 .slide-landing { border-left: 4px solid var(--color-accent); justify-content: center; align-items: flex-start; padding-left: calc(var(--sp-xl) - 4px); }
