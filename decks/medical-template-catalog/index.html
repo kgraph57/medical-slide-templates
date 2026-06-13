@@ -93,13 +93,14 @@
       margin-bottom: 2px;
       margin-top: 10px;
     }
+    .consort { position: relative; }
     .consort-box {
       background: #fff;
       border: 1.5px solid #16191f;
       border-radius: 2px;
       padding: 8px 18px;
       text-align: center;
-      min-width: 200px;
+      width: 230px;          /* 固定幅 → 全箱が中央で揃い縦スパインが通る */
       font-weight: 600;
       color: #16191f;
     }
@@ -108,13 +109,24 @@
       background: rgba(221,227,234,.2);
       color: #5c6470;
       font-weight: 400;
-      min-width: 160px;
+      width: 188px;
     }
+    /* 本流の箱は中央固定。除外の箱は絶対配置で右に逃がし、スパインをずらさない */
     .consort-row {
+      position: relative;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 24px;
+      width: 100%;
     }
+    .consort-row > .consort-side-arrow,
+    .consort-row > .consort-box.excluded {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .consort-row > .consort-side-arrow { left: calc(50% + 115px); }
+    .consort-row > .consort-box.excluded { left: calc(50% + 115px + 26px); }
     /* 縦コネクタ（罫線＋シェブロン。テキスト矢印を廃止） */
     .consort-arrow {
       position: relative;
@@ -171,6 +183,7 @@
 
     /* === PRISMA図 === */
     .prisma {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -183,7 +196,7 @@
       border-radius: 2px;
       padding: 7px 16px;
       text-align: center;
-      min-width: 240px;
+      width: 250px;          /* 固定幅で本流の縦スパインを揃える */
       color: #16191f;
     }
     .prisma-box .num { font-weight: 700; font-size: 16px; color: #1a5fb4; }
@@ -191,13 +204,24 @@
       border-color: #dde3ea;
       background: rgba(221,227,234,.15);
       color: #5c6470;
-      min-width: 140px;
+      width: 196px;
     }
     .prisma-row {
+      position: relative;
       display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 20px;
+      width: 100%;
     }
+    /* 除外を含む行のみ：本流箱を中央固定し、除外を絶対配置で右へ逃がす（最上段の2ソース行は除外なしなので従来通り中央ペア） */
+    .prisma-row:has(.excluded) > .consort-side-arrow,
+    .prisma-row:has(.excluded) > .prisma-box.excluded {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .prisma-row:has(.excluded) > .consort-side-arrow { left: calc(50% + 125px); }
+    .prisma-row:has(.excluded) > .prisma-box.excluded { left: calc(50% + 125px + 26px); }
     .prisma-arrow {
       position: relative;
       width: 1.5px;
@@ -2201,24 +2225,24 @@
           <strong>全身状態の評価（PAT）</strong><br><span style="color:#5c6470;font-size:14px;">外観・呼吸・循環</span>
         </div>
         <div class="algo-arrow"></div>
-        <div style="display:flex;gap:16px;">
-          <div style="background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:2px;padding:8px 20px;text-align:center;min-width:140px;">
-            <strong style="color:#dc2626;">不安定</strong><br><span style="font-size:14px;">蘇生室 → ABC安定化</span>
+        <div style="display:flex;gap:14px;width:660px;">
+          <div style="flex:1;background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:2px;padding:10px 20px;text-align:center;">
+            <strong style="color:#dc2626;">不安定</strong><br><span style="font-size:14px;color:#5c6470;">蘇生室 → ABC安定化</span>
           </div>
-          <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:2px;padding:8px 20px;text-align:center;min-width:140px;">
-            <strong style="color:#059669;">安定</strong><br><span style="font-size:14px;">年齢別リスク評価 ↓</span>
+          <div style="flex:1;background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:2px;padding:10px 20px;text-align:center;">
+            <strong style="color:#059669;">安定 → 年齢別リスク評価</strong>
           </div>
         </div>
         <div class="algo-arrow"></div>
-        <div style="display:flex;gap:12px;">
-          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
-            <strong>28日以内</strong><br><span style="font-size:13px;">Full workup<br>入院+抗菌薬</span>
+        <div style="display:flex;gap:12px;width:660px;">
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:10px 14px;text-align:center;flex:1;">
+            <strong>28日以内</strong><br><span style="font-size:13px;color:#5c6470;">Full workup<br>入院+抗菌薬</span>
           </div>
-          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
-            <strong>29日-3ヶ月</strong><br><span style="font-size:13px;">Rochester基準<br>で層別化</span>
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:10px 14px;text-align:center;flex:1;">
+            <strong>29日-3ヶ月</strong><br><span style="font-size:13px;color:#5c6470;">Rochester基準で層別化</span>
           </div>
-          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
-            <strong>3ヶ月以上</strong><br><span style="font-size:13px;">臨床所見+検査<br>リスク層別化</span>
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:10px 14px;text-align:center;flex:1;">
+            <strong>3ヶ月以上</strong><br><span style="font-size:13px;color:#5c6470;">臨床所見+検査でリスク層別化</span>
           </div>
         </div>
       </div>
@@ -2233,7 +2257,7 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:14px;">
         <div style="background:#fff;border:2px solid #1a5fb4;border-radius:2px;padding:8px 24px;text-align:center;font-weight:700;">市中肺炎の臨床診断 → 重症度評価</div>
         <div class="algo-arrow"></div>
-        <div style="display:flex;gap:14px;">
+        <div style="display:flex;gap:14px;width:720px;">
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
             <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
               <strong style="color:#059669;">外来（軽症）</strong>
