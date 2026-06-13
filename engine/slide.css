@@ -158,3 +158,74 @@ body.capture .slide-ui { display: none !important; }
 
   .slide-ui { display: none !important; }
 }
+
+
+/* ============================================================
+   スライドグリッド（Müller-Brockmann系）＋ Gキーオーバーレイ
+   デザインQA用。既定は非表示。Gキーで body.grid-on をトグル。
+   1280×720 / 余白64px / 12カラム / 8pxベースライン。
+   見た目には一切影響しない（grid-on の時だけ重なる）。
+   ============================================================ */
+:root {
+  --grid-margin:   64px;
+  --grid-cols:     12;
+  --grid-gutter:   24px;
+  --grid-baseline: 8px;
+  --grid-lead:     24px;            /* leading = 3 × baseline */
+  --grid-fill:     rgba(0,120,255,.05);
+  --grid-line:     rgba(232,28,92,.55);   /* クラシックな製図マゼンタ */
+  --grid-minor:    rgba(232,28,92,.14);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .12s;
+}
+body.grid-on .grid-overlay { opacity: 1; }
+
+/* 12カラム（コンテンツと同じ余白ボックスに乗せる） */
+.grid-overlay .g-cols {
+  position: absolute;
+  inset: var(--grid-margin);
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  column-gap: var(--grid-gutter);
+}
+.grid-overlay .g-cols span { background: var(--grid-fill); position: relative; }
+.grid-overlay .g-cols span::before {
+  content: attr(data-n);
+  position: absolute;
+  top: -15px; left: 0;
+  font: 9px/1 var(--font-mono, monospace);
+  letter-spacing: .05em;
+  color: var(--grid-line);
+}
+
+/* 8pxベースライン（24px毎に強い線、8px毎に細い線） */
+.grid-overlay .g-base {
+  position: absolute;
+  inset: var(--grid-margin);
+  background-image:
+    repeating-linear-gradient(to bottom, var(--grid-minor) 0 1px, transparent 1px var(--grid-baseline)),
+    repeating-linear-gradient(to bottom, var(--grid-line)  0 1px, transparent 1px var(--grid-lead));
+}
+
+/* 余白フレーム */
+.grid-overlay .g-frame {
+  position: absolute;
+  inset: var(--grid-margin);
+  outline: 1px solid var(--grid-line);
+}
+
+/* 右上の小ラベル */
+.grid-overlay .g-label {
+  position: absolute;
+  top: 14px; right: 16px;
+  font: 700 9px/1 var(--font-mono, monospace);
+  letter-spacing: .12em;
+  color: var(--grid-line);
+}
