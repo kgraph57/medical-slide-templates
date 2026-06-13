@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medical Slide Template Catalog</title>
   <link rel="stylesheet" href="../../engine/slide.css">
-  <link rel="stylesheet" href="../../theme/anthropic.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../theme/journal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .slide h1 { font-family: "Noto Serif JP", serif; }
+    /* 見出しはテーマの中立グロテスクを継承（明朝の重い見出しは廃止） */
     .template-label {
       position: absolute;
       top: 12px;
@@ -23,12 +23,12 @@
       z-index: 30;
     }
     .slide-title .template-label,
-    .slide-end .template-label { color: rgba(255,255,255,.5); }
+    .slide-end .template-label { color: var(--color-num); }
 
     /* === COI開示 === */
     .coi-box {
-      border: 2px solid #e3dacc;
-      border-radius: 16px;
+      border: 2px solid #dde3ea;
+      border-radius: 2px;
       padding: 48px 56px;
       text-align: center;
       max-width: 720px;
@@ -37,24 +37,24 @@
     .coi-box h3 {
       font-size: 26px;
       font-weight: 700;
-      color: #3d3d3a;
+      color: #16191f;
       margin-bottom: 32px;
     }
-    .coi-box p { font-size: 22px; color: #3d3d3a; line-height: 1.9; }
+    .coi-box p { font-size: 22px; color: #16191f; line-height: 1.9; }
     .coi-box .coi-name {
       font-size: 22px;
       font-weight: 700;
-      color: #3d3d3a;
+      color: #16191f;
       margin-top: 28px;
       padding-top: 28px;
-      border-top: 1px solid #e3dacc;
+      border-top: 1px solid #dde3ea;
     }
 
     /* === 倫理審査 === */
     .ethics-box {
-      background: rgba(217,119,87,.04);
-      border: 1px solid rgba(217,119,87,.2);
-      border-radius: 16px;
+      background: rgba(26,95,180,.04);
+      border: 1px solid rgba(26,95,180,.2);
+      border-radius: 2px;
       padding: 40px 48px;
       max-width: 720px;
       margin: 0 auto;
@@ -63,17 +63,17 @@
       display: flex;
       gap: 20px;
       padding: 14px 0;
-      border-bottom: 1px solid rgba(217,119,87,.1);
+      border-bottom: 1px solid rgba(26,95,180,.1);
       font-size: 22px;
     }
     .ethics-box .ethics-row:last-child { border-bottom: none; }
     .ethics-label {
       font-weight: 700;
-      color: #3d3d3a;
+      color: #16191f;
       min-width: 180px;
       flex-shrink: 0;
     }
-    .ethics-value { color: #3d3d3a; }
+    .ethics-value { color: #16191f; }
 
     /* === CONSORT図 === */
     .consort {
@@ -88,25 +88,25 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #87867f;
+      color: #5c6470;
       align-self: flex-start;
       margin-bottom: 2px;
       margin-top: 10px;
     }
     .consort-box {
       background: #fff;
-      border: 1.5px solid #3d3d3a;
-      border-radius: 6px;
+      border: 1.5px solid #16191f;
+      border-radius: 2px;
       padding: 8px 18px;
       text-align: center;
       min-width: 200px;
       font-weight: 600;
-      color: #3d3d3a;
+      color: #16191f;
     }
     .consort-box.excluded {
-      border-color: #e3dacc;
-      background: rgba(227,218,204,.2);
-      color: #87867f;
+      border-color: #dde3ea;
+      background: rgba(221,227,234,.2);
+      color: #5c6470;
       font-weight: 400;
       min-width: 160px;
     }
@@ -115,14 +115,53 @@
       align-items: center;
       gap: 24px;
     }
+    /* 縦コネクタ（罫線＋シェブロン。テキスト矢印を廃止） */
     .consort-arrow {
-      font-size: 16px;
-      color: #87867f;
-      margin: 2px 0;
+      position: relative;
+      width: 1.5px;
+      height: 26px;
+      margin: 0 auto;
+      font-size: 0;
     }
+    .consort-arrow::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 6px;
+      width: 1.5px;
+      background: var(--color-border-strong);
+    }
+    .consort-arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%; bottom: 1px;
+      width: 7px; height: 7px;
+      border-right: 1.5px solid var(--color-border-strong);
+      border-bottom: 1.5px solid var(--color-border-strong);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    /* 横コネクタ */
     .consort-side-arrow {
-      font-size: 14px;
-      color: #87867f;
+      position: relative;
+      width: 26px;
+      height: 1.5px;
+      flex-shrink: 0;
+      font-size: 0;
+    }
+    .consort-side-arrow::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 6px;
+      height: 1.5px;
+      background: var(--color-border-strong);
+    }
+    .consort-side-arrow::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: 1px;
+      width: 7px; height: 7px;
+      border-top: 1.5px solid var(--color-border-strong);
+      border-right: 1.5px solid var(--color-border-strong);
+      transform: translateY(-50%) rotate(45deg);
     }
     .consort-split {
       display: flex;
@@ -140,18 +179,18 @@
     }
     .prisma-box {
       background: #fff;
-      border: 1.5px solid #3d3d3a;
-      border-radius: 6px;
+      border: 1.5px solid #16191f;
+      border-radius: 2px;
       padding: 7px 16px;
       text-align: center;
       min-width: 240px;
-      color: #3d3d3a;
+      color: #16191f;
     }
-    .prisma-box .num { font-weight: 700; font-size: 16px; color: #d97757; }
+    .prisma-box .num { font-weight: 700; font-size: 16px; color: #1a5fb4; }
     .prisma-box.excluded {
-      border-color: #e3dacc;
-      background: rgba(227,218,204,.15);
-      color: #87867f;
+      border-color: #dde3ea;
+      background: rgba(221,227,234,.15);
+      color: #5c6470;
       min-width: 140px;
     }
     .prisma-row {
@@ -160,9 +199,27 @@
       gap: 20px;
     }
     .prisma-arrow {
-      font-size: 14px;
-      color: #87867f;
-      margin: 2px 0;
+      position: relative;
+      width: 1.5px;
+      height: 24px;
+      margin: 0 auto;
+      font-size: 0;
+    }
+    .prisma-arrow::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 6px;
+      width: 1.5px;
+      background: var(--color-border-strong);
+    }
+    .prisma-arrow::after {
+      content: '';
+      position: absolute;
+      left: 50%; bottom: 1px;
+      width: 7px; height: 7px;
+      border-right: 1.5px solid var(--color-border-strong);
+      border-bottom: 1.5px solid var(--color-border-strong);
+      transform: translateX(-50%) rotate(45deg);
     }
 
     /* === Forest Plot === */
@@ -176,22 +233,22 @@
       align-items: center;
       gap: 12px;
       padding: 8px 0;
-      border-bottom: 1px solid rgba(227,218,204,.5);
+      border-bottom: 1px solid rgba(221,227,234,.5);
     }
     .forest-row.header {
       font-weight: 700;
-      color: #3d3d3a;
-      border-bottom: 2px solid #e3dacc;
+      color: #16191f;
+      border-bottom: 2px solid #dde3ea;
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: .5px;
     }
     .forest-row.overall {
       font-weight: 700;
-      border-top: 2px solid #e3dacc;
+      border-top: 2px solid #dde3ea;
       border-bottom: none;
     }
-    .forest-label { color: #3d3d3a; }
+    .forest-label { color: #16191f; }
     .forest-bar-area {
       position: relative;
       height: 24px;
@@ -204,19 +261,19 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: #3d3d3a;
+      background: #16191f;
     }
     .forest-ci {
       position: absolute;
       height: 2px;
-      background: #3d3d3a;
+      background: #16191f;
     }
     .forest-point {
       position: absolute;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #d97757;
+      background: #1a5fb4;
       transform: translate(-50%, -50%);
       top: 50%;
     }
@@ -226,7 +283,7 @@
       border-radius: 2px;
       transform: translate(-50%, -50%) rotate(45deg);
     }
-    .forest-hr { font-weight: 600; color: #3d3d3a; text-align: right; }
+    .forest-hr { font-weight: 600; color: #16191f; text-align: right; }
 
     /* === PICO表 === */
     .pico-grid {
@@ -238,8 +295,8 @@
     }
     .pico-cell {
       background: #fff;
-      border: 1px solid #e3dacc;
-      border-radius: 12px;
+      border: 1px solid #dde3ea;
+      border-radius: 2px;
       padding: 24px 28px;
     }
     .pico-cell .pico-letter {
@@ -247,7 +304,7 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: #d97757;
+      background: #1a5fb4;
       color: #fff;
       font-weight: 700;
       font-size: 18px;
@@ -258,12 +315,12 @@
     .pico-cell h4 {
       font-size: 14px;
       font-weight: 700;
-      color: #87867f;
+      color: #5c6470;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .pico-cell p { font-size: 18px; color: #3d3d3a; line-height: 1.7; }
+    .pico-cell p { font-size: 18px; color: #16191f; line-height: 1.7; }
 
     /* === バイアスリスク（Traffic Light） === */
     .rob-table {
@@ -271,13 +328,13 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 2px;
       overflow: hidden;
-      border: 1px solid #e3dacc;
+      border: 1px solid #dde3ea;
     }
     .rob-table th {
-      background: #e3dacc;
-      color: #3d3d3a;
+      background: #dde3ea;
+      color: #16191f;
       padding: 10px 14px;
       text-align: left;
       font-weight: 700;
@@ -286,8 +343,8 @@
     }
     .rob-table td {
       padding: 10px 14px;
-      border-bottom: 1px solid #e3dacc;
-      color: #3d3d3a;
+      border-bottom: 1px solid #dde3ea;
+      color: #16191f;
     }
     .rob-table tr:last-child td { border-bottom: none; }
     .rob-light {
@@ -311,13 +368,13 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 2px;
       overflow: hidden;
-      border: 1px solid #e3dacc;
+      border: 1px solid #dde3ea;
     }
     .grade-table th {
-      background: #e3dacc;
-      color: #3d3d3a;
+      background: #dde3ea;
+      color: #16191f;
       padding: 10px 14px;
       text-align: center;
       font-weight: 700;
@@ -326,8 +383,8 @@
     .grade-table th:first-child { text-align: left; }
     .grade-table td {
       padding: 10px 14px;
-      border-bottom: 1px solid #e3dacc;
-      color: #3d3d3a;
+      border-bottom: 1px solid #dde3ea;
+      color: #16191f;
       text-align: center;
     }
     .grade-table td:first-child { text-align: left; font-weight: 600; }
@@ -335,7 +392,7 @@
     .grade-badge {
       display: inline-block;
       padding: 2px 12px;
-      border-radius: 12px;
+      border-radius: 2px;
       font-weight: 700;
       font-size: 14px;
       color: #fff;
@@ -348,8 +405,8 @@
     /* === 論文書誌カード === */
     .bib-card {
       background: #fff;
-      border: 1px solid #e3dacc;
-      border-radius: 16px;
+      border: 1px solid #dde3ea;
+      border-radius: 2px;
       padding: 40px 48px;
       max-width: 740px;
       margin: 0 auto;
@@ -357,7 +414,7 @@
     .bib-card .bib-journal {
       font-size: 16px;
       font-weight: 700;
-      color: #d97757;
+      color: #1a5fb4;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 16px;
@@ -365,25 +422,25 @@
     .bib-card .bib-title {
       font-size: 24px;
       font-weight: 700;
-      color: #3d3d3a;
+      color: #16191f;
       line-height: 1.5;
       margin-bottom: 16px;
     }
     .bib-card .bib-authors {
       font-size: 18px;
-      color: #87867f;
+      color: #5c6470;
       margin-bottom: 20px;
     }
     .bib-card .bib-meta {
       display: flex;
       gap: 28px;
       font-size: 16px;
-      color: #3d3d3a;
+      color: #16191f;
       padding-top: 20px;
-      border-top: 1px solid #e3dacc;
+      border-top: 1px solid #dde3ea;
     }
     .bib-meta-item { display: flex; gap: 6px; align-items: center; }
-    .bib-meta-label { font-weight: 700; color: #87867f; }
+    .bib-meta-label { font-weight: 700; color: #5c6470; }
 
     /* === 検査値テーブル === */
     .lab-table {
@@ -391,13 +448,13 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 2px;
       overflow: hidden;
-      border: 1px solid #e3dacc;
+      border: 1px solid #dde3ea;
     }
     .lab-table th {
-      background: #e3dacc;
-      color: #3d3d3a;
+      background: #dde3ea;
+      color: #16191f;
       padding: 8px 14px;
       text-align: left;
       font-weight: 700;
@@ -405,13 +462,13 @@
     }
     .lab-table td {
       padding: 8px 14px;
-      border-bottom: 1px solid #e3dacc;
-      color: #3d3d3a;
+      border-bottom: 1px solid #dde3ea;
+      color: #16191f;
     }
     .lab-table tr:last-child td { border-bottom: none; }
     .lab-high { color: #dc2626; font-weight: 700; }
     .lab-low { color: #2563eb; font-weight: 700; }
-    .lab-ref { color: #87867f; font-size: 13px; }
+    .lab-ref { color: #5c6470; font-size: 13px; }
 
     /* === 鑑別診断テーブル === */
     .ddx-table {
@@ -419,13 +476,13 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 2px;
       overflow: hidden;
-      border: 1px solid #e3dacc;
+      border: 1px solid #dde3ea;
     }
     .ddx-table th {
-      background: #e3dacc;
-      color: #3d3d3a;
+      background: #dde3ea;
+      color: #16191f;
       padding: 10px 16px;
       text-align: left;
       font-weight: 700;
@@ -433,8 +490,8 @@
     }
     .ddx-table td {
       padding: 10px 16px;
-      border-bottom: 1px solid #e3dacc;
-      color: #3d3d3a;
+      border-bottom: 1px solid #dde3ea;
+      color: #16191f;
       vertical-align: top;
     }
     .ddx-table tr:last-child td { border-bottom: none; }
@@ -451,15 +508,15 @@
     }
     .vital-card {
       background: #fff;
-      border: 1px solid #e3dacc;
-      border-radius: 10px;
+      border: 1px solid #dde3ea;
+      border-radius: 2px;
       padding: 16px 20px;
       text-align: center;
     }
     .vital-card .vital-label {
       font-size: 14px;
       font-weight: 700;
-      color: #87867f;
+      color: #5c6470;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 6px;
@@ -467,13 +524,13 @@
     .vital-card .vital-value {
       font-size: 32px;
       font-weight: 700;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-sans);
     }
     .vital-card .vital-unit {
       font-size: 14px;
-      color: #87867f;
+      color: #5c6470;
     }
-    .vital-normal { color: #3d3d3a; }
+    .vital-normal { color: #16191f; }
     .vital-abnormal { color: #dc2626; }
 
     /* === 臨床経過図 === */
@@ -483,7 +540,7 @@
     }
     .cc-timeline {
       display: flex;
-      border-bottom: 2px solid #3d3d3a;
+      border-bottom: 2px solid #16191f;
       padding-bottom: 4px;
       margin-bottom: 0;
     }
@@ -492,16 +549,16 @@
       text-align: center;
       font-size: 14px;
       font-weight: 700;
-      color: #3d3d3a;
+      color: #16191f;
     }
     .cc-section {
       padding: 8px 0;
-      border-bottom: 1px solid #e3dacc;
+      border-bottom: 1px solid #dde3ea;
     }
     .cc-section-label {
       font-size: 13px;
       font-weight: 700;
-      color: #87867f;
+      color: #5c6470;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 4px;
@@ -514,7 +571,7 @@
     }
     .cc-drug-name {
       font-size: 14px;
-      color: #3d3d3a;
+      color: #16191f;
       min-width: 90px;
       text-align: right;
       padding-right: 8px;
@@ -541,7 +598,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #d97757;
+      background: #1a5fb4;
       margin-top: 4px;
       margin-right: 4px;
       flex-shrink: 0;
@@ -556,22 +613,22 @@
     }
     .discussion-point {
       background: #fff;
-      border: 1px solid #e3dacc;
-      border-left: 4px solid #d97757;
-      border-radius: 0 10px 10px 0;
+      border: 1px solid #dde3ea;
+      border-left: 4px solid #1a5fb4;
+      border-radius: 0 2px 2px 0;
       padding: 14px 20px;
     }
     .discussion-point .dp-num {
       font-size: 14px;
       font-weight: 700;
-      color: #d97757;
+      color: #1a5fb4;
       letter-spacing: 1px;
       margin-bottom: 4px;
     }
     .discussion-point p {
       font-size: 16px;
       font-weight: 600;
-      color: #3d3d3a;
+      color: #16191f;
       line-height: 1.5;
     }
 
@@ -594,7 +651,7 @@
     .sl-col.limitations h3 { color: #dc2626; border-bottom: 2px solid #dc2626; }
     .sl-col li {
       font-size: 18px;
-      color: #3d3d3a;
+      color: #16191f;
       line-height: 1.6;
       margin-bottom: 8px;
       padding-left: 16px;
@@ -609,13 +666,13 @@
       border-collapse: separate;
       border-spacing: 0;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 2px;
       overflow: hidden;
-      border: 1px solid #e3dacc;
+      border: 1px solid #dde3ea;
     }
     .table1 th {
-      background: #e3dacc;
-      color: #3d3d3a;
+      background: #dde3ea;
+      color: #16191f;
       padding: 10px 16px;
       text-align: center;
       font-weight: 700;
@@ -624,22 +681,22 @@
     .table1 th:first-child { text-align: left; }
     .table1 td {
       padding: 8px 16px;
-      border-bottom: 1px solid #e3dacc;
-      color: #3d3d3a;
+      border-bottom: 1px solid #dde3ea;
+      color: #16191f;
       text-align: center;
     }
-    .table1 td:first-child { text-align: left; font-weight: 600; color: #3d3d3a; }
+    .table1 td:first-child { text-align: left; font-weight: 600; color: #16191f; }
     .table1 tr:last-child td { border-bottom: none; }
-    .table1 .p-sig { color: #d97757; font-weight: 700; }
+    .table1 .p-sig { color: #1a5fb4; font-weight: 700; }
 
     /* === Highlight Box === */
     .highlight-box {
-      background: rgba(217,119,87,.06);
-      border-left: 4px solid #d97757;
-      border-radius: 0 10px 10px 0;
+      background: rgba(26,95,180,.06);
+      border-left: 4px solid #1a5fb4;
+      border-radius: 0 2px 2px 0;
       padding: 16px 24px;
     }
-    .highlight-box p { font-size: 18px; font-weight: 600; color: #3d3d3a; margin: 0; }
+    .highlight-box p { font-size: 18px; font-weight: 600; color: #16191f; margin: 0; }
 
     /* === スライドフッター === */
     .slide-footer {
@@ -653,13 +710,15 @@
       justify-content: space-between;
       padding: 0 64px;
       font-size: 12px;
-      color: #87867f;
-      font-family: 'Poppins', sans-serif;
+      color: #5c6470;
+      font-family: var(--font-sans);
       z-index: 20;
       pointer-events: none;
     }
     .slide-footer .footer-left { letter-spacing: .5px; }
     .slide-footer .footer-right { font-family: var(--font-mono); letter-spacing: 1px; }
+    /* このデッキは自前フッターでページ番号を出すため、エンジン側の番号・カウンタは隠す（二重表示防止） */
+    .slide-page-num, .slide-counter { display: none !important; }
 
 
     /* コンテンツがフッターに被らないよう下パディングを確保 */
@@ -675,7 +734,7 @@
   <!-- ============================================ -->
 
   <!-- 01: タイトル -->
-  <section class="slide slide-title bg-mesh bg-noise">
+  <section class="slide slide-title">
     <span class="template-label">slide-title</span>
     <p class="label mono">Medical Template Catalog</p>
     <h1>医学スライド<br>テンプレート集</h1>
@@ -683,7 +742,7 @@
   </section>
 
   <!-- 02: COI開示 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">coi-disclosure</span>
     <div class="body">
       <h2>利益相反（COI）開示</h2>
@@ -696,7 +755,7 @@
   </section>
 
   <!-- 03: COI開示（ありの場合） -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">coi-disclosure (with COI)</span>
     <div class="body">
       <h2>利益相反（COI）開示</h2>
@@ -713,7 +772,7 @@
   </section>
 
   <!-- 04: 倫理審査情報 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">ethics-approval</span>
     <div class="body">
       <h2>倫理的配慮</h2>
@@ -728,7 +787,7 @@
   </section>
 
   <!-- 05: セクション区切り -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>学会口演テンプレート</h2>
     <p>Research Presentation Templates</p>
@@ -739,7 +798,7 @@
   <!-- ============================================ -->
 
   <!-- 06: 患者背景テーブル (Table 1) -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">table-1 (patient baseline)</span>
     <div class="body">
       <h2>Table 1. 患者背景</h2>
@@ -757,7 +816,7 @@
   </section>
 
   <!-- 07: CONSORT図 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">consort-flow</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>CONSORT フローダイアグラム</h2>
@@ -793,7 +852,7 @@
   </section>
 
   <!-- 08: PRISMA図 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">prisma-flow</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>PRISMA 2020 フローダイアグラム</h2>
@@ -822,13 +881,13 @@
           <div class="prisma-box excluded">除外 n=216<br><span style="font-size:13px;">対象外 124 / 介入不一致 92</span></div>
         </div>
         <div class="prisma-arrow">↓</div>
-        <div class="prisma-box" style="border-color:#d97757;border-width:3px;">最終採用<br><span class="num">n = 24</span></div>
+        <div class="prisma-box" style="border-color:#1a5fb4;border-width:3px;">最終採用<br><span class="num">n = 24</span></div>
       </div>
     </div>
   </section>
 
   <!-- 09: Forest Plot -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">forest-plot</span>
     <div class="body">
       <h2>Forest Plot: 主要アウトカムのサブグループ解析</h2>
@@ -906,7 +965,7 @@
   </section>
 
   <!-- 10: Kaplan-Meier曲線 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">kaplan-meier</span>
     <div class="body">
       <h2>Kaplan-Meier 生存曲線</h2>
@@ -918,7 +977,7 @@
   </section>
 
   <!-- 11: ROC曲線 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">roc-curve</span>
     <div class="body">
       <h2>ROC曲線: AI診断モデルの性能評価</h2>
@@ -929,13 +988,13 @@
         <div>
           <h3 class="accent" style="font-size:16px;">診断性能</h3>
           <div style="margin-top:12px;">
-            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e3dacc;font-size:15px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #dde3ea;font-size:15px;">
               <span style="font-weight:700;">AUC</span><span class="accent" style="font-weight:700;">0.94</span>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e3dacc;font-size:15px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #dde3ea;font-size:15px;">
               <span style="font-weight:700;">感度</span><span>93.2%</span>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e3dacc;font-size:15px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #dde3ea;font-size:15px;">
               <span style="font-weight:700;">特異度</span><span>89.0%</span>
             </div>
             <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:15px;">
@@ -948,7 +1007,7 @@
   </section>
 
   <!-- 12: エビデンスピラミッド -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">evidence-pyramid</span>
     <div class="body">
       <h2>エビデンスのピラミッド</h2>
@@ -961,7 +1020,7 @@
   </section>
 
   <!-- 13: セクション: 抄読会 -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>抄読会テンプレート</h2>
     <p>Journal Club Templates</p>
@@ -972,7 +1031,7 @@
   <!-- ============================================ -->
 
   <!-- 14: 論文書誌カード -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">bibliography-card</span>
     <div class="body">
       <h2>論文情報</h2>
@@ -991,7 +1050,7 @@
   </section>
 
   <!-- 15: PICO表 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">pico-table</span>
     <div class="body">
       <h2>PICO</h2>
@@ -1021,7 +1080,7 @@
   </section>
 
   <!-- 16: バイアスリスク評価 (Traffic Light) -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">risk-of-bias (RoB 2)</span>
     <div class="body">
       <h2>バイアスリスク評価（RoB 2）</h2>
@@ -1067,7 +1126,7 @@
   </section>
 
   <!-- 17: GRADE評価 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">grade-assessment</span>
     <div class="body">
       <h2>GRADEエビデンスプロファイル</h2>
@@ -1111,7 +1170,7 @@
   </section>
 
   <!-- 18: Strengths & Limitations -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">strengths-limitations</span>
     <div class="body">
       <h2>Internal Validity: 強みと限界</h2>
@@ -1139,7 +1198,7 @@
   </section>
 
   <!-- 19: ディスカッションポイント -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">discussion-points</span>
     <div class="body">
       <h2>ディスカッションポイント</h2>
@@ -1161,40 +1220,40 @@
   </section>
 
   <!-- 41: Abstract / 構造化抄録 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">structured-abstract</span>
     <div class="body">
       <h2>Structured Abstract</h2>
       <div style="display:flex;flex-direction:column;gap:12px;max-width:720px;">
-        <div style="background:#fff;border:1px solid #e3dacc;border-left:4px solid #d97757;border-radius:0 10px 10px 0;padding:16px 20px;">
-          <h3 style="font-size:13px;font-weight:700;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Background</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">小児救急外来におけるトリアージの過少評価は重篤な転帰に繋がるリスクがある。AI支援トリアージの有効性を検証するエビデンスは限られている。</p>
+        <div style="background:#fff;border:1px solid #dde3ea;border-left:4px solid #1a5fb4;border-radius:0 10px 10px 0;padding:16px 20px;">
+          <h3 style="font-size:13px;font-weight:700;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Background</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">小児救急外来におけるトリアージの過少評価は重篤な転帰に繋がるリスクがある。AI支援トリアージの有効性を検証するエビデンスは限られている。</p>
         </div>
-        <div style="background:#fff;border:1px solid #e3dacc;border-left:4px solid #d97757;border-radius:0 10px 10px 0;padding:16px 20px;">
-          <h3 style="font-size:13px;font-weight:700;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Methods</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">日本の8施設で実施した並行群間RCT。生後1ヶ月〜15歳の小児ER受診患者235名をAI支援トリアージ群（n=120）と従来トリアージ群（n=115）に無作為割付した。</p>
+        <div style="background:#fff;border:1px solid #dde3ea;border-left:4px solid #1a5fb4;border-radius:0 10px 10px 0;padding:16px 20px;">
+          <h3 style="font-size:13px;font-weight:700;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Methods</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">日本の8施設で実施した並行群間RCT。生後1ヶ月〜15歳の小児ER受診患者235名をAI支援トリアージ群（n=120）と従来トリアージ群（n=115）に無作為割付した。</p>
         </div>
-        <div style="background:#fff;border:1px solid #e3dacc;border-left:4px solid #d97757;border-radius:0 10px 10px 0;padding:16px 20px;">
-          <h3 style="font-size:13px;font-weight:700;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Results</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">主要アウトカムである過少トリアージ率はAI群7.7% vs 対照群12.4%（リスク差 -4.7%, 95%CI: -7.8 to -1.6, p=0.003）。ER滞在時間も有意に短縮された（1.9 vs 3.2時間, p<0.001）。</p>
+        <div style="background:#fff;border:1px solid #dde3ea;border-left:4px solid #1a5fb4;border-radius:0 10px 10px 0;padding:16px 20px;">
+          <h3 style="font-size:13px;font-weight:700;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Results</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">主要アウトカムである過少トリアージ率はAI群7.7% vs 対照群12.4%（リスク差 -4.7%, 95%CI: -7.8 to -1.6, p=0.003）。ER滞在時間も有意に短縮された（1.9 vs 3.2時間, p<0.001）。</p>
         </div>
-        <div style="background:#fff;border:1px solid #e3dacc;border-left:4px solid #d97757;border-radius:0 10px 10px 0;padding:16px 20px;">
-          <h3 style="font-size:13px;font-weight:700;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Conclusions</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">AI支援トリアージは小児ERにおける過少トリアージを有意に減少させ、患者安全性の向上に寄与する。外的妥当性の検証には国際的な多施設研究が必要である。</p>
+        <div style="background:#fff;border:1px solid #dde3ea;border-left:4px solid #1a5fb4;border-radius:0 10px 10px 0;padding:16px 20px;">
+          <h3 style="font-size:13px;font-weight:700;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Conclusions</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">AI支援トリアージは小児ERにおける過少トリアージを有意に減少させ、患者安全性の向上に寄与する。外的妥当性の検証には国際的な多施設研究が必要である。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 42: Clinical Bottom Line -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">clinical-bottom-line</span>
     <h2>AI支援トリアージにより<br>NNT = <span class="accent">8</span> で1件の<br>過少トリアージを回避できる</h2>
     <div style="margin-top:32px;max-width:560px;">
       <div class="highlight-box">
         <p style="font-size:16px;font-weight:400;">明日からの診療: AI支援は特にJTASレベル2（緊急）患者で効果が大きい。導入の第一歩として夜間帯のトリアージ補助から検討する価値がある。</p>
       </div>
-      <div style="display:flex;gap:24px;justify-content:center;margin-top:20px;font-size:16px;color:#87867f;">
+      <div style="display:flex;gap:24px;justify-content:center;margin-top:20px;font-size:16px;color:#5c6470;">
         <span>NNT 8</span>
         <span>NNH 38</span>
         <span>ARR 4.7%</span>
@@ -1203,7 +1262,7 @@
   </section>
 
   <!-- 43: CASP チェックリスト -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">casp-checklist</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>CASP チェックリスト（RCT）</h2>
@@ -1229,7 +1288,7 @@
   </section>
 
   <!-- 44: エビデンスサマリーテーブル -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">evidence-summary</span>
     <div class="body">
       <h2>エビデンスサマリー</h2>
@@ -1274,7 +1333,7 @@
   </section>
 
   <!-- 20: セクション: 症例報告 -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>症例報告テンプレート</h2>
     <p>Case Report Templates</p>
@@ -1285,7 +1344,7 @@
   <!-- ============================================ -->
 
   <!-- 58: 症例: 患者基本情報 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">patient-info</span>
     <div class="body">
       <h2>症例提示</h2>
@@ -1307,7 +1366,7 @@
   </section>
 
   <!-- 59: 症例: 現病歴 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">present-illness</span>
     <div class="body">
       <h2>現病歴</h2>
@@ -1321,7 +1380,7 @@
   </section>
 
   <!-- 60: 症例: 既往歴・家族歴・内服 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">past-history</span>
     <div class="body">
       <h2>既往歴・家族歴・内服歴</h2>
@@ -1343,13 +1402,13 @@
   </section>
 
   <!-- 61: 症例: 身体所見 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">physical-exam</span>
     <div class="body">
       <h2>身体所見</h2>
       <div class="cols-2">
         <div>
-          <h3 style="font-size:16px;color:#87867f;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">全身所見</h3>
+          <h3 style="font-size:16px;color:#5c6470;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">全身所見</h3>
           <ul class="list" style="font-size:16px;line-height:1.9;">
             <li>全身状態: 不機嫌だが意識清明</li>
             <li>栄養状態: 良好</li>
@@ -1358,7 +1417,7 @@
           </ul>
         </div>
         <div>
-          <h3 style="font-size:16px;color:#87867f;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">系統別所見</h3>
+          <h3 style="font-size:16px;color:#5c6470;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">系統別所見</h3>
           <ul class="list" style="font-size:16px;line-height:1.9;">
             <li>頭頸部: 咽頭発赤(+)、眼球結膜充血(-)、項部硬直(-)</li>
             <li>胸部: 呼吸音清、心雑音なし</li>
@@ -1371,7 +1430,7 @@
   </section>
 
   <!-- 21: バイタルサイン -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">vital-signs</span>
     <div class="body">
       <h2>来院時バイタルサイン</h2>
@@ -1411,7 +1470,7 @@
   </section>
 
   <!-- 22: 検査値テーブル -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">lab-results</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>検査所見</h2>
@@ -1446,7 +1505,7 @@
   </section>
 
   <!-- 23: 鑑別診断テーブル -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">differential-diagnosis</span>
     <div class="body">
       <h2>鑑別診断</h2>
@@ -1472,7 +1531,7 @@
           <td class="ddx-against">尿検査正常</td>
         </tr>
         <tr>
-          <td style="font-weight:700;color:#d97757;">★ 敗血症</td>
+          <td style="font-weight:700;color:#1a5fb4;">★ 敗血症</td>
           <td class="ddx-for">高熱、頻脈、PCT↑、Lac↑、凝固異常</td>
           <td class="ddx-against">—</td>
         </tr>
@@ -1481,7 +1540,7 @@
   </section>
 
   <!-- 24: 臨床経過図 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">clinical-course</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>臨床経過</h2>
@@ -1506,26 +1565,26 @@
           <div class="cc-drug-row">
             <div class="cc-drug-name">MEPM</div>
             <div class="cc-drug-bar-area">
-              <div class="cc-drug-bar" style="width:71%;background:#d97757;">120mg/kg/day</div>
+              <div class="cc-drug-bar" style="width:71%;background:#1a5fb4;">120mg/kg/day</div>
             </div>
           </div>
           <div class="cc-drug-row">
             <div class="cc-drug-name">VCM</div>
             <div class="cc-drug-bar-area">
-              <div class="cc-drug-bar" style="width:43%;background:#d4a27f;">60mg/kg/day</div>
+              <div class="cc-drug-bar" style="width:43%;background:#6b7280;">60mg/kg/day</div>
             </div>
           </div>
           <div class="cc-drug-row">
             <div class="cc-drug-name">ABPC</div>
             <div class="cc-drug-bar-area">
               <div style="width:43%;"></div>
-              <div class="cc-drug-bar" style="width:43%;background:#87867f;">200mg/kg/day</div>
+              <div class="cc-drug-bar" style="width:43%;background:#5c6470;">200mg/kg/day</div>
             </div>
           </div>
         </div>
         <div class="cc-section">
           <div class="cc-section-label">イベント</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:#3d3d3a;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:#16191f;">
             <span><span class="cc-event-marker" style="display:inline-block;vertical-align:middle;"></span> Day1 入院・血培提出</span>
             <span><span class="cc-event-marker" style="display:inline-block;vertical-align:middle;"></span> Day2 血培陽性（GBS）</span>
             <span><span class="cc-event-marker" style="display:inline-block;vertical-align:middle;"></span> Day3 感受性判明→de-escalation</span>
@@ -1537,20 +1596,20 @@
   </section>
 
   <!-- 25: 画像アノテーション（プレースホルダー） -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">image-annotation</span>
     <div class="body">
       <h2>画像所見</h2>
       <div class="cols-2" style="align-items:center;">
-        <div style="background:#f0ede8;border-radius:12px;height:280px;display:flex;align-items:center;justify-content:center;position:relative;">
+        <div style="background:#f0ede8;border-radius:2px;height:280px;display:flex;align-items:center;justify-content:center;position:relative;">
           <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
-            <rect x="20" y="20" width="160" height="160" rx="8" stroke="#87867f" stroke-width="1" stroke-dasharray="4 2"/>
-            <text x="100" y="100" text-anchor="middle" fill="#87867f" font-size="14" font-family="Inter">CT / MRI / X線</text>
-            <text x="100" y="120" text-anchor="middle" fill="#87867f" font-size="12" font-family="Inter">画像をここに配置</text>
-            <circle cx="130" cy="80" r="20" stroke="#d97757" stroke-width="2" fill="none"/>
-            <line x1="148" y1="72" x2="175" y2="55" stroke="#d97757" stroke-width="1.5"/>
+            <rect x="20" y="20" width="160" height="160" rx="8" stroke="#5c6470" stroke-width="1" stroke-dasharray="4 2"/>
+            <text x="100" y="100" text-anchor="middle" fill="#5c6470" font-size="14" font-family="Inter">CT / MRI / X線</text>
+            <text x="100" y="120" text-anchor="middle" fill="#5c6470" font-size="12" font-family="Inter">画像をここに配置</text>
+            <circle cx="130" cy="80" r="20" stroke="#1a5fb4" stroke-width="2" fill="none"/>
+            <line x1="148" y1="72" x2="175" y2="55" stroke="#1a5fb4" stroke-width="1.5"/>
           </svg>
-          <div style="position:absolute;right:12px;top:12px;background:#d97757;color:#fff;font-size:13px;font-weight:700;padding:3px 8px;border-radius:4px;">矢印</div>
+          <div style="position:absolute;right:12px;top:12px;background:#1a5fb4;color:#fff;font-size:13px;font-weight:700;padding:3px 8px;border-radius:4px;">矢印</div>
         </div>
         <div>
           <h3 style="font-size:16px;">所見</h3>
@@ -1568,7 +1627,7 @@
   </section>
 
   <!-- 45: Problem List -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">problem-list</span>
     <div class="body">
       <h2>Problem List</h2>
@@ -1584,7 +1643,7 @@
           </ol>
         </div>
         <div>
-          <h3 style="font-size:14px;font-weight:700;color:#87867f;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #87867f;">Inactive / Past Problems</h3>
+          <h3 style="font-size:14px;font-weight:700;color:#5c6470;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #5c6470;">Inactive / Past Problems</h3>
           <ol class="list" style="font-size:15px;line-height:2;">
             <li>気管支喘息 — 2歳時発症、現在寛解</li>
             <li>熱性けいれん — 1歳6ヶ月時に1回（単純型）</li>
@@ -1597,29 +1656,29 @@
   </section>
 
   <!-- 46: 薬剤投与タイムライン -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">medication-timeline</span>
     <div class="body">
       <h2>薬剤投与タイムライン</h2>
       <div class="gantt" style="gap:6px;">
-        <div class="gantt-row"><div class="gantt-label">MEPM</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:50%;background:#d97757;"></div></div></div>
-        <div class="gantt-row"><div class="gantt-label">VCM</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:36%;background:#d97757;"></div></div></div>
-        <div class="gantt-row"><div class="gantt-label">ABPC</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:36%;width:50%;background:#d4a27f;"></div></div></div>
-        <div class="gantt-row"><div class="gantt-label">生食 + KCL</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:21%;background:#e3dacc;"></div></div></div>
-        <div class="gantt-row"><div class="gantt-label">rTM（リコモジュリン）</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:43%;background:#87867f;"></div></div></div>
+        <div class="gantt-row"><div class="gantt-label">MEPM</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:50%;background:#1a5fb4;"></div></div></div>
+        <div class="gantt-row"><div class="gantt-label">VCM</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:36%;background:#1a5fb4;"></div></div></div>
+        <div class="gantt-row"><div class="gantt-label">ABPC</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:36%;width:50%;background:#6b7280;"></div></div></div>
+        <div class="gantt-row"><div class="gantt-label">生食 + KCL</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:21%;background:#dde3ea;"></div></div></div>
+        <div class="gantt-row"><div class="gantt-label">rTM（リコモジュリン）</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:43%;background:#5c6470;"></div></div></div>
         <div class="gantt-row"><div class="gantt-label">アセトアミノフェン</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:14%;background:#b0afa8;border-radius:4px;opacity:.6;"></div><div class="gantt-bar" style="left:21%;width:7%;background:#b0afa8;border-radius:4px;opacity:.6;"></div></div></div>
       </div>
-      <div style="display:flex;gap:16px;margin-top:12px;font-size:13px;color:#87867f;">
-        <span><span style="display:inline-block;width:12px;height:12px;background:#d97757;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗菌薬（広域）</span>
-        <span><span style="display:inline-block;width:12px;height:12px;background:#d4a27f;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗菌薬（de-escalation後）</span>
-        <span><span style="display:inline-block;width:12px;height:12px;background:#e3dacc;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>輸液</span>
-        <span><span style="display:inline-block;width:12px;height:12px;background:#87867f;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗凝固薬</span>
+      <div style="display:flex;gap:16px;margin-top:12px;font-size:13px;color:#5c6470;">
+        <span><span style="display:inline-block;width:12px;height:12px;background:#1a5fb4;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗菌薬（広域）</span>
+        <span><span style="display:inline-block;width:12px;height:12px;background:#6b7280;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗菌薬（de-escalation後）</span>
+        <span><span style="display:inline-block;width:12px;height:12px;background:#dde3ea;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>輸液</span>
+        <span><span style="display:inline-block;width:12px;height:12px;background:#5c6470;border-radius:3px;vertical-align:middle;margin-right:4px;"></span>抗凝固薬</span>
       </div>
     </div>
   </section>
 
   <!-- 62: 2x2混同行列（診断精度） -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">confusion-matrix</span>
     <div class="body">
       <h2>診断性能: 2x2表</h2>
@@ -1629,21 +1688,21 @@
             <tr><th></th><th style="text-align:center;">疾患あり</th><th style="text-align:center;">疾患なし</th></tr>
             <tr>
               <td>検査陽性</td>
-              <td style="text-align:center;background:rgba(217,119,87,.1);font-weight:700;color:#d97757;">TP: 112</td>
+              <td style="text-align:center;background:rgba(26,95,180,.1);font-weight:700;color:#1a5fb4;">TP: 112</td>
               <td style="text-align:center;">FP: 14</td>
             </tr>
             <tr>
               <td>検査陰性</td>
               <td style="text-align:center;">FN: 8</td>
-              <td style="text-align:center;background:rgba(217,119,87,.1);font-weight:700;color:#d97757;">TN: 101</td>
+              <td style="text-align:center;background:rgba(26,95,180,.1);font-weight:700;color:#1a5fb4;">TN: 101</td>
             </tr>
           </table>
         </div>
         <div>
           <table class="table1" style="max-width:340px;">
             <tr><th>指標</th><th style="text-align:center;">値</th><th style="text-align:center;">95% CI</th></tr>
-            <tr><td>感度</td><td style="text-align:center;font-weight:700;color:#d97757;">93.3%</td><td style="text-align:center;">87.3-97.1</td></tr>
-            <tr><td>特異度</td><td style="text-align:center;font-weight:700;color:#d97757;">87.8%</td><td style="text-align:center;">80.7-93.0</td></tr>
+            <tr><td>感度</td><td style="text-align:center;font-weight:700;color:#1a5fb4;">93.3%</td><td style="text-align:center;">87.3-97.1</td></tr>
+            <tr><td>特異度</td><td style="text-align:center;font-weight:700;color:#1a5fb4;">87.8%</td><td style="text-align:center;">80.7-93.0</td></tr>
             <tr><td>陽性的中率</td><td style="text-align:center;">88.9%</td><td style="text-align:center;">82.1-93.7</td></tr>
             <tr><td>陰性的中率</td><td style="text-align:center;">92.7%</td><td style="text-align:center;">86.1-96.8</td></tr>
             <tr><td>陽性尤度比</td><td style="text-align:center;">7.65</td><td style="text-align:center;">4.6-12.7</td></tr>
@@ -1655,60 +1714,60 @@
   </section>
 
   <!-- 63: 人工呼吸器設定経時変化 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">ventilator-settings</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>人工呼吸器設定の経時変化</h2>
       <div style="font-size:14px;">
-        <div style="display:flex;border-bottom:2px solid #e3dacc;padding-bottom:4px;margin-bottom:8px;">
-          <div style="min-width:90px;font-weight:700;color:#87867f;">パラメータ</div>
-          <div style="flex:1;display:flex;text-align:center;font-weight:700;color:#3d3d3a;">
+        <div style="display:flex;border-bottom:2px solid #dde3ea;padding-bottom:4px;margin-bottom:8px;">
+          <div style="min-width:90px;font-weight:700;color:#5c6470;">パラメータ</div>
+          <div style="flex:1;display:flex;text-align:center;font-weight:700;color:#16191f;">
             <div style="flex:1;">Day 1</div><div style="flex:1;">Day 2</div><div style="flex:1;">Day 3</div><div style="flex:1;">Day 5</div><div style="flex:1;">Day 7</div><div style="flex:1;">Day 10</div>
           </div>
         </div>
-        <div style="display:flex;padding:6px 0;border-bottom:1px solid #e3dacc;">
+        <div style="display:flex;padding:6px 0;border-bottom:1px solid #dde3ea;">
           <div style="min-width:90px;font-weight:600;">モード</div>
-          <div style="flex:1;display:flex;text-align:center;color:#3d3d3a;">
+          <div style="flex:1;display:flex;text-align:center;color:#16191f;">
             <div style="flex:1;">SIMV+PS</div><div style="flex:1;">SIMV+PS</div><div style="flex:1;">CPAP+PS</div><div style="flex:1;">CPAP+PS</div><div style="flex:1;">HFNC</div><div style="flex:1;color:#059669;font-weight:700;">Room Air</div>
           </div>
         </div>
-        <div style="display:flex;padding:6px 0;border-bottom:1px solid #e3dacc;">
+        <div style="display:flex;padding:6px 0;border-bottom:1px solid #dde3ea;">
           <div style="min-width:90px;font-weight:600;">FiO2</div>
-          <div style="flex:1;display:flex;text-align:center;color:#3d3d3a;">
-            <div style="flex:1;color:#dc2626;font-weight:700;">0.60</div><div style="flex:1;color:#d97757;">0.45</div><div style="flex:1;">0.35</div><div style="flex:1;">0.30</div><div style="flex:1;">0.25</div><div style="flex:1;color:#059669;font-weight:700;">0.21</div>
+          <div style="flex:1;display:flex;text-align:center;color:#16191f;">
+            <div style="flex:1;color:#dc2626;font-weight:700;">0.60</div><div style="flex:1;color:#1a5fb4;">0.45</div><div style="flex:1;">0.35</div><div style="flex:1;">0.30</div><div style="flex:1;">0.25</div><div style="flex:1;color:#059669;font-weight:700;">0.21</div>
           </div>
         </div>
-        <div style="display:flex;padding:6px 0;border-bottom:1px solid #e3dacc;">
+        <div style="display:flex;padding:6px 0;border-bottom:1px solid #dde3ea;">
           <div style="min-width:90px;font-weight:600;">PEEP</div>
-          <div style="flex:1;display:flex;text-align:center;color:#3d3d3a;">
-            <div style="flex:1;color:#dc2626;font-weight:700;">8</div><div style="flex:1;color:#d97757;">7</div><div style="flex:1;">6</div><div style="flex:1;">5</div><div style="flex:1;">—</div><div style="flex:1;">—</div>
+          <div style="flex:1;display:flex;text-align:center;color:#16191f;">
+            <div style="flex:1;color:#dc2626;font-weight:700;">8</div><div style="flex:1;color:#1a5fb4;">7</div><div style="flex:1;">6</div><div style="flex:1;">5</div><div style="flex:1;">—</div><div style="flex:1;">—</div>
           </div>
         </div>
-        <div style="display:flex;padding:6px 0;border-bottom:1px solid #e3dacc;">
+        <div style="display:flex;padding:6px 0;border-bottom:1px solid #dde3ea;">
           <div style="min-width:90px;font-weight:600;">P/F比</div>
-          <div style="flex:1;display:flex;text-align:center;color:#3d3d3a;">
-            <div style="flex:1;color:#dc2626;font-weight:700;">142</div><div style="flex:1;color:#d97757;">198</div><div style="flex:1;">265</div><div style="flex:1;">312</div><div style="flex:1;">380</div><div style="flex:1;color:#059669;font-weight:700;">420</div>
+          <div style="flex:1;display:flex;text-align:center;color:#16191f;">
+            <div style="flex:1;color:#dc2626;font-weight:700;">142</div><div style="flex:1;color:#1a5fb4;">198</div><div style="flex:1;">265</div><div style="flex:1;">312</div><div style="flex:1;">380</div><div style="flex:1;color:#059669;font-weight:700;">420</div>
           </div>
         </div>
         <div style="display:flex;padding:6px 0;">
           <div style="min-width:90px;font-weight:600;">SpO2</div>
-          <div style="flex:1;display:flex;text-align:center;color:#3d3d3a;">
+          <div style="flex:1;display:flex;text-align:center;color:#16191f;">
             <div style="flex:1;">92%</div><div style="flex:1;">94%</div><div style="flex:1;">96%</div><div style="flex:1;">97%</div><div style="flex:1;">98%</div><div style="flex:1;">98%</div>
           </div>
         </div>
       </div>
-      <p class="muted" style="font-size:13px;margin-top:8px;"><span style="color:#dc2626;">赤</span> = 異常域 / <span style="color:#d97757;">オレンジ</span> = 注意域 / <span style="color:#059669;">緑</span> = 正常化</p>
+      <p class="muted" style="font-size:13px;margin-top:8px;"><span style="color:#dc2626;">赤</span> = 異常域 / <span style="color:#1a5fb4;">オレンジ</span> = 注意域 / <span style="color:#059669;">緑</span> = 正常化</p>
     </div>
   </section>
 
   <!-- 26: Take Home Message -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">take-home-message</span>
     <h2>AI支援トリアージは<br>過少トリアージを <span class="accent">38%</span> 減少させ<br>小児ERの安全性を向上させた</h2>
   </section>
 
   <!-- 35: 選択基準・除外基準 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">inclusion-exclusion</span>
     <div class="body">
       <h2>選択基準・除外基準</h2>
@@ -1737,7 +1796,7 @@
   </section>
 
   <!-- 36: 研究デザイン概要図 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">study-design</span>
     <div class="body">
       <h2>研究デザイン概要</h2>
@@ -1757,7 +1816,7 @@
           <div class="flow-vertical">
             <div class="flow-v-step" style="padding:10px;font-size:13px;"><h3 style="font-size:14px;">適格性スクリーニング</h3></div>
             <div class="flow-v-arrow">↓</div>
-            <div class="flow-v-step" style="padding:10px;font-size:13px;border-color:#d97757;"><h3 style="font-size:14px;">ランダム化 (n=235)</h3></div>
+            <div class="flow-v-step" style="padding:10px;font-size:13px;border-color:#1a5fb4;"><h3 style="font-size:14px;">ランダム化 (n=235)</h3></div>
             <div class="flow-v-arrow">↓</div>
             <div style="display:flex;gap:12px;width:100%;">
               <div class="flow-v-step" style="flex:1;padding:8px;"><h3 style="font-size:13px;">AI群 (n=120)</h3><p style="font-size:13px;">AI支援トリアージ</p></div>
@@ -1772,32 +1831,32 @@
   </section>
 
   <!-- 37: 統計手法サマリー -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">statistical-methods</span>
     <div class="body">
       <h2>統計解析手法</h2>
       <div class="cols-3">
         <div class="card" style="padding:24px;">
-          <h3 style="font-size:13px;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">主要解析</h3>
+          <h3 style="font-size:13px;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">主要解析</h3>
           <h4 style="font-size:16px;font-weight:700;margin-bottom:8px;">ITT解析</h4>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">ランダム化された全患者を割付群で解析。主要アウトカム（過少トリアージ率）をリスク差で評価。両側検定 α=0.05。</p>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">ランダム化された全患者を割付群で解析。主要アウトカム（過少トリアージ率）をリスク差で評価。両側検定 α=0.05。</p>
         </div>
         <div class="card" style="padding:24px;">
-          <h3 style="font-size:13px;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">副次解析</h3>
+          <h3 style="font-size:13px;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">副次解析</h3>
           <h4 style="font-size:16px;font-weight:700;margin-bottom:8px;">ロジスティック回帰</h4>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">過少トリアージの関連因子を多変量解析。共変量: 年齢、来院時間帯、重症度、施設を調整。OR + 95%CIを報告。</p>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">過少トリアージの関連因子を多変量解析。共変量: 年齢、来院時間帯、重症度、施設を調整。OR + 95%CIを報告。</p>
         </div>
         <div class="card" style="padding:24px;">
-          <h3 style="font-size:13px;color:#d97757;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">感度分析</h3>
+          <h3 style="font-size:13px;color:#1a5fb4;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">感度分析</h3>
           <h4 style="font-size:16px;font-weight:700;margin-bottom:8px;">多重補完法 (MICE)</h4>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">欠測データに対し多重補完法を実施（m=20）。完全ケース解析との結果の頑健性を確認。</p>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">欠測データに対し多重補完法を実施（m=20）。完全ケース解析との結果の頑健性を確認。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 38: サブグループ解析テーブル -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">subgroup-table</span>
     <div class="body">
       <h2>サブグループ解析</h2>
@@ -1870,7 +1929,7 @@
   </section>
 
   <!-- 39: Outcome Summary -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">outcome-summary</span>
     <div class="body">
       <h2>Outcome Summary</h2>
@@ -1882,8 +1941,8 @@
           <th>効果量</th>
           <th>p値</th>
         </tr>
-        <tr style="background:rgba(217,119,87,.06);">
-          <td style="color:#d97757;">★ 過少トリアージ率（主要）</td>
+        <tr style="background:rgba(26,95,180,.06);">
+          <td style="color:#1a5fb4;">★ 過少トリアージ率（主要）</td>
           <td style="text-align:center;">7.7%</td>
           <td style="text-align:center;">12.4%</td>
           <td style="text-align:center;font-weight:700;">RD -4.7%</td>
@@ -1922,7 +1981,7 @@
   </section>
 
   <!-- 40: Acknowledgments / Funding -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">acknowledgments</span>
     <div class="body">
       <h2>Acknowledgments & Funding</h2>
@@ -1947,7 +2006,7 @@
   </section>
 
   <!-- 27: セクション: 汎用 -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>汎用テンプレート</h2>
     <p>General-Purpose Templates (for Medical Use)</p>
@@ -1958,7 +2017,7 @@
   <!-- ============================================ -->
 
   <!-- 28: flow（横型）= 研究フロー -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">flow</span>
     <div class="body">
       <h2>研究プロトコルのフロー</h2>
@@ -1975,7 +2034,7 @@
   </section>
 
   <!-- 29: timeline = 研究タイムライン -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">timeline</span>
     <div class="body">
       <h2>研究タイムライン</h2>
@@ -1989,7 +2048,7 @@
   </section>
 
   <!-- 30: gantt = 研究スケジュール -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">gantt</span>
     <div class="body">
       <h2>研究スケジュール</h2>
@@ -2005,7 +2064,7 @@
   </section>
 
   <!-- 31: before-after = AI導入効果 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">before-after</span>
     <div class="body">
       <h2>AI導入前後のワークフロー変化</h2>
@@ -2028,7 +2087,7 @@
   </section>
 
   <!-- 32: stat = 主要結果の数値 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">stat</span>
     <div class="body">
       <h2>主要結果</h2>
@@ -2041,7 +2100,7 @@
   </section>
 
   <!-- 33: 参考文献 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">references</span>
     <div class="body">
       <h2>参考文献</h2>
@@ -2060,18 +2119,18 @@
   <!-- ============================================ -->
 
   <!-- 47: セクション区切り: 教育講演 -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>教育講演テンプレート</h2>
     <p>Educational Lecture Templates</p>
   </section>
 
   <!-- 48: Learning Objectives -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">learning-objectives</span>
     <div class="body">
       <h2>Learning Objectives</h2>
-      <p style="font-size:15px;color:#87867f;margin-bottom:20px;">本セッション終了後、参加者は以下のことができるようになる</p>
+      <p style="font-size:15px;color:#5c6470;margin-bottom:20px;">本セッション終了後、参加者は以下のことができるようになる</p>
       <ol class="list" style="font-size:17px;line-height:2.2;counter-reset:lo;">
         <li>小児の発熱性好中球減少症（FN）の定義と初期対応を説明できる</li>
         <li>リスク層別化ツール（MASCC, CISNE）を用いて低リスク・高リスクを判別できる</li>
@@ -2082,83 +2141,83 @@
   </section>
 
   <!-- 49: Key Definitions -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">key-definitions</span>
     <div class="body">
       <h2>Key Definitions</h2>
       <div class="cols-2">
         <div class="card" style="padding:20px;">
-          <h3 style="font-size:16px;color:#d97757;margin-bottom:8px;">発熱性好中球減少症（FN）</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">好中球数 < 500/μL（または48時間以内に < 500/μL への低下が予測される）の状態で、腋窩温 37.5℃以上の発熱を認めるもの。</p>
+          <h3 style="font-size:16px;color:#1a5fb4;margin-bottom:8px;">発熱性好中球減少症（FN）</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">好中球数 < 500/μL（または48時間以内に < 500/μL への低下が予測される）の状態で、腋窩温 37.5℃以上の発熱を認めるもの。</p>
         </div>
         <div class="card" style="padding:20px;">
-          <h3 style="font-size:16px;color:#d97757;margin-bottom:8px;">MASCCスコア</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">Multinational Association for Supportive Care in Cancer によるリスクスコア。21点以上を低リスクと判定。感度71%、特異度68%。</p>
+          <h3 style="font-size:16px;color:#1a5fb4;margin-bottom:8px;">MASCCスコア</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">Multinational Association for Supportive Care in Cancer によるリスクスコア。21点以上を低リスクと判定。感度71%、特異度68%。</p>
         </div>
         <div class="card" style="padding:20px;">
-          <h3 style="font-size:16px;color:#d97757;margin-bottom:8px;">エンピリック治療</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">起因菌の同定前に、想定される病原体をカバーする広域抗菌薬を投与する治療戦略。培養結果に基づきde-escalationを行う。</p>
+          <h3 style="font-size:16px;color:#1a5fb4;margin-bottom:8px;">エンピリック治療</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">起因菌の同定前に、想定される病原体をカバーする広域抗菌薬を投与する治療戦略。培養結果に基づきde-escalationを行う。</p>
         </div>
         <div class="card" style="padding:20px;">
-          <h3 style="font-size:16px;color:#d97757;margin-bottom:8px;">Breakthrough Infection</h3>
-          <p style="font-size:14px;color:#3d3d3a;line-height:1.7;">予防的抗菌薬投与中に発症する感染症。耐性菌の関与が示唆され、抗菌薬選択の変更を要する場合がある。</p>
+          <h3 style="font-size:16px;color:#1a5fb4;margin-bottom:8px;">Breakthrough Infection</h3>
+          <p style="font-size:14px;color:#16191f;line-height:1.7;">予防的抗菌薬投与中に発症する感染症。耐性菌の関与が示唆され、抗菌薬選択の変更を要する場合がある。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 50: クイズスライド -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">quiz</span>
     <div class="body">
       <h2>Question</h2>
-      <p style="font-size:15px;color:#3d3d3a;line-height:1.8;margin-bottom:20px;">8歳男児。ALL維持療法中。3日前から38.5℃の発熱が持続。WBC 800/μL（好中球120/μL）、CRP 8.2 mg/dL。バイタルは安定。この患者への初期対応として最も適切なものはどれか?</p>
+      <p style="font-size:15px;color:#16191f;line-height:1.8;margin-bottom:20px;">8歳男児。ALL維持療法中。3日前から38.5℃の発熱が持続。WBC 800/μL（好中球120/μL）、CRP 8.2 mg/dL。バイタルは安定。この患者への初期対応として最も適切なものはどれか?</p>
       <div class="cols-2" style="gap:12px;">
-        <div class="card" style="padding:16px;border-color:#e3dacc;">
-          <p style="font-size:15px;margin:0;"><strong style="color:#87867f;">A.</strong> 経口セフェム系抗菌薬を処方し外来フォロー</p>
+        <div class="card" style="padding:16px;border-color:#dde3ea;">
+          <p style="font-size:15px;margin:0;"><strong style="color:#5c6470;">A.</strong> 経口セフェム系抗菌薬を処方し外来フォロー</p>
         </div>
-        <div class="card" style="padding:16px;border-color:#e3dacc;">
-          <p style="font-size:15px;margin:0;"><strong style="color:#87867f;">B.</strong> 血液培養を採取し解熱剤のみで経過観察</p>
+        <div class="card" style="padding:16px;border-color:#dde3ea;">
+          <p style="font-size:15px;margin:0;"><strong style="color:#5c6470;">B.</strong> 血液培養を採取し解熱剤のみで経過観察</p>
         </div>
-        <div class="card" style="padding:16px;border-color:#d97757;border-width:2px;">
-          <p style="font-size:15px;margin:0;"><strong style="color:#d97757;">C.</strong> 血液培養2セット採取後、抗緑膿菌活性を持つ広域抗菌薬を静注開始</p>
+        <div class="card" style="padding:16px;border-color:#1a5fb4;border-width:2px;">
+          <p style="font-size:15px;margin:0;"><strong style="color:#1a5fb4;">C.</strong> 血液培養2セット採取後、抗緑膿菌活性を持つ広域抗菌薬を静注開始</p>
         </div>
-        <div class="card" style="padding:16px;border-color:#e3dacc;">
-          <p style="font-size:15px;margin:0;"><strong style="color:#87867f;">D.</strong> G-CSF投与のみで好中球回復を待つ</p>
+        <div class="card" style="padding:16px;border-color:#dde3ea;">
+          <p style="font-size:15px;margin:0;"><strong style="color:#5c6470;">D.</strong> G-CSF投与のみで好中球回復を待つ</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 51: 診断アルゴリズム -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">diagnostic-algorithm</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>発熱小児トリアージアルゴリズム</h2>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:15px;">
-        <div style="background:#fff;border:2px solid #d97757;border-radius:8px;padding:10px 28px;text-align:center;font-weight:700;">発熱小児（38.0℃以上）来院</div>
-        <div style="color:#87867f;font-size:16px;margin:4px 0;">↓</div>
-        <div style="background:#fff;border:1px solid #e3dacc;border-radius:8px;padding:8px 24px;text-align:center;">
-          <strong>全身状態の評価（PAT）</strong><br><span style="color:#87867f;font-size:14px;">外観・呼吸・循環</span>
+        <div style="background:#fff;border:2px solid #1a5fb4;border-radius:2px;padding:10px 28px;text-align:center;font-weight:700;">発熱小児（38.0℃以上）来院</div>
+        <div class="algo-arrow"></div>
+        <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 24px;text-align:center;">
+          <strong>全身状態の評価（PAT）</strong><br><span style="color:#5c6470;font-size:14px;">外観・呼吸・循環</span>
         </div>
-        <div style="color:#87867f;font-size:16px;margin:4px 0;">↓</div>
+        <div class="algo-arrow"></div>
         <div style="display:flex;gap:16px;">
-          <div style="background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:8px;padding:8px 20px;text-align:center;min-width:140px;">
+          <div style="background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:2px;padding:8px 20px;text-align:center;min-width:140px;">
             <strong style="color:#dc2626;">不安定</strong><br><span style="font-size:14px;">蘇生室 → ABC安定化</span>
           </div>
-          <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:8px;padding:8px 20px;text-align:center;min-width:140px;">
+          <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:2px;padding:8px 20px;text-align:center;min-width:140px;">
             <strong style="color:#059669;">安定</strong><br><span style="font-size:14px;">年齢別リスク評価 ↓</span>
           </div>
         </div>
-        <div style="color:#87867f;font-size:16px;margin:4px 0;">↓</div>
+        <div class="algo-arrow"></div>
         <div style="display:flex;gap:12px;">
-          <div style="background:#fff;border:1px solid #e3dacc;border-radius:8px;padding:8px 16px;text-align:center;flex:1;">
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
             <strong>28日以内</strong><br><span style="font-size:13px;">Full workup<br>入院+抗菌薬</span>
           </div>
-          <div style="background:#fff;border:1px solid #e3dacc;border-radius:8px;padding:8px 16px;text-align:center;flex:1;">
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
             <strong>29日-3ヶ月</strong><br><span style="font-size:13px;">Rochester基準<br>で層別化</span>
           </div>
-          <div style="background:#fff;border:1px solid #e3dacc;border-radius:8px;padding:8px 16px;text-align:center;flex:1;">
+          <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:8px 16px;text-align:center;flex:1;">
             <strong>3ヶ月以上</strong><br><span style="font-size:13px;">臨床所見+検査<br>リスク層別化</span>
           </div>
         </div>
@@ -2167,39 +2226,39 @@
   </section>
 
   <!-- 52: 治療アルゴリズム -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">treatment-algorithm</span>
     <div class="body" style="justify-content:flex-start;">
       <h2>小児市中肺炎: 抗菌薬選択アルゴリズム</h2>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:14px;">
-        <div style="background:#fff;border:2px solid #d97757;border-radius:6px;padding:8px 24px;text-align:center;font-weight:700;">市中肺炎の臨床診断 → 重症度評価</div>
-        <div style="color:#87867f;font-size:14px;margin:4px 0;">↓</div>
+        <div style="background:#fff;border:2px solid #1a5fb4;border-radius:2px;padding:8px 24px;text-align:center;font-weight:700;">市中肺炎の臨床診断 → 重症度評価</div>
+        <div class="algo-arrow"></div>
         <div style="display:flex;gap:14px;">
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
+            <div style="background:rgba(5,150,105,.06);border:1px solid #059669;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
               <strong style="color:#059669;">外来（軽症）</strong>
             </div>
-            <div style="color:#87867f;font-size:13px;margin:3px 0;">↓</div>
-            <div style="background:#fff;border:1px solid #e3dacc;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
-              <strong>AMPC</strong><br><span style="font-size:13px;color:#87867f;">40-50mg/kg/day 分3, 5日間</span>
+            <div class="algo-arrow"></div>
+            <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
+              <strong>AMPC</strong><br><span style="font-size:13px;color:#5c6470;">40-50mg/kg/day 分3, 5日間</span>
             </div>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="background:rgba(245,158,11,.06);border:1px solid #f59e0b;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
+            <div style="background:rgba(245,158,11,.06);border:1px solid #f59e0b;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
               <strong style="color:#f59e0b;">入院（中等症）</strong>
             </div>
-            <div style="color:#87867f;font-size:13px;margin:3px 0;">↓</div>
-            <div style="background:#fff;border:1px solid #e3dacc;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
-              <strong>ABPC静注</strong><br><span style="font-size:13px;color:#87867f;">150-200mg/kg/day 分4<br>マイコプラズマ疑: +AZM</span>
+            <div class="algo-arrow"></div>
+            <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
+              <strong>ABPC静注</strong><br><span style="font-size:13px;color:#5c6470;">150-200mg/kg/day 分4<br>マイコプラズマ疑: +AZM</span>
             </div>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0;">
-            <div style="background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
+            <div style="background:rgba(220,38,38,.06);border:1px solid #dc2626;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
               <strong style="color:#dc2626;">ICU（重症）</strong>
             </div>
-            <div style="color:#87867f;font-size:13px;margin:3px 0;">↓</div>
-            <div style="background:#fff;border:1px solid #e3dacc;border-radius:6px;padding:6px 14px;text-align:center;width:100%;">
-              <strong>CTX/CTRX + AZM</strong><br><span style="font-size:13px;color:#87867f;">MRSA疑: +VCM<br>48h後に再評価</span>
+            <div class="algo-arrow"></div>
+            <div style="background:#fff;border:1px solid #dde3ea;border-radius:2px;padding:6px 14px;text-align:center;width:100%;">
+              <strong>CTX/CTRX + AZM</strong><br><span style="font-size:13px;color:#5c6470;">MRSA疑: +VCM<br>48h後に再評価</span>
             </div>
           </div>
         </div>
@@ -2208,7 +2267,7 @@
   </section>
 
   <!-- 53: ガイドライン比較表 -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">guideline-comparison</span>
     <div class="body">
       <h2>小児市中肺炎ガイドライン比較</h2>
@@ -2252,14 +2311,14 @@
   <!-- ============================================ -->
 
   <!-- 54: セクション区切り: 臨床試験プロット -->
-  <section class="slide slide-landing bg-gradient bg-noise">
+  <section class="slide slide-landing">
     <span class="template-label">section-break</span>
     <h2>臨床試験プロット</h2>
     <p>Clinical Trial Plots</p>
   </section>
 
   <!-- 55: Waterfall Plot -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">waterfall-plot</span>
     <div class="body">
       <h2>Waterfall Plot: 腫瘍径変化率</h2>
@@ -2271,26 +2330,26 @@
   </section>
 
   <!-- 56: Swimmer Plot -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">swimmer-plot</span>
     <div class="body">
       <h2>Swimmer Plot: 患者別治療経過</h2>
       <div class="gantt" style="gap:6px;">
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 01</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:85%;background:#d97757;"></div><span class="swimmer-marker" style="position:absolute;left:85%;top:4px;font-size:14px;" title="CR">●</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 02</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:72%;background:#d97757;"></div><span class="swimmer-marker" style="position:absolute;left:72%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 03</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:95%;background:#d97757;"></div><span class="swimmer-marker" style="position:absolute;left:95%;top:4px;font-size:14px;" title="CR">●</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 04</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:45%;background:#d4a27f;"></div><span class="swimmer-marker" style="position:absolute;left:45%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 05</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:100%;background:#d97757;"></div><span class="swimmer-marker" style="position:absolute;left:100%;top:4px;font-size:14px;transform:translateX(-100%);" title="ongoing">→</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 06</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:60%;background:#d4a27f;"></div><span class="swimmer-marker" style="position:absolute;left:38%;top:4px;font-size:14px;" title="PR">◆</span><span class="swimmer-marker" style="position:absolute;left:60%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 07</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:80%;background:#d97757;"></div><span class="swimmer-marker" style="position:absolute;left:80%;top:4px;font-size:14px;" title="CR">●</span></div></div>
-        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 08</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:35%;background:#87867f;"></div><span class="swimmer-marker" style="position:absolute;left:35%;top:4px;font-size:14px;" title="Death">✕</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 01</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:85%;background:#1a5fb4;"></div><span class="swimmer-marker" style="position:absolute;left:85%;top:4px;font-size:14px;" title="CR">●</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 02</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:72%;background:#1a5fb4;"></div><span class="swimmer-marker" style="position:absolute;left:72%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 03</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:95%;background:#1a5fb4;"></div><span class="swimmer-marker" style="position:absolute;left:95%;top:4px;font-size:14px;" title="CR">●</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 04</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:45%;background:#6b7280;"></div><span class="swimmer-marker" style="position:absolute;left:45%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 05</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:100%;background:#1a5fb4;"></div><span class="swimmer-marker" style="position:absolute;left:100%;top:4px;font-size:14px;transform:translateX(-100%);" title="ongoing">→</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 06</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:60%;background:#6b7280;"></div><span class="swimmer-marker" style="position:absolute;left:38%;top:4px;font-size:14px;" title="PR">◆</span><span class="swimmer-marker" style="position:absolute;left:60%;top:4px;font-size:14px;" title="PD">▲</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 07</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:80%;background:#1a5fb4;"></div><span class="swimmer-marker" style="position:absolute;left:80%;top:4px;font-size:14px;" title="CR">●</span></div></div>
+        <div class="gantt-row" style="height:28px;"><div class="gantt-label" style="font-size:13px;">Pt 08</div><div class="gantt-bar-area"><div class="gantt-bar" style="left:0%;width:35%;background:#5c6470;"></div><span class="swimmer-marker" style="position:absolute;left:35%;top:4px;font-size:14px;" title="Death">✕</span></div></div>
       </div>
       <p class="muted" style="font-size:13px;text-align:center;margin-top:8px;">● CR &nbsp; ◆ PR &nbsp; ▲ PD &nbsp; ✕ Death &nbsp; → Ongoing</p>
     </div>
   </section>
 
   <!-- 57: Funnel Plot -->
-  <section class="slide slide-content bg-noise">
+  <section class="slide slide-content">
     <span class="template-label">funnel-plot</span>
     <div class="body">
       <h2>Funnel Plot: 出版バイアスの評価</h2>
@@ -2302,7 +2361,7 @@
   </section>
 
   <!-- 締め -->
-  <section class="slide slide-end bg-noise">
+  <section class="slide slide-end">
     <span class="template-label">slide-end</span>
     <div class="mark"></div>
     <h2>ご清聴ありがとうございました</h2>
@@ -2332,10 +2391,10 @@ document.querySelectorAll('.slide').forEach((slide, i) => {
   slide.appendChild(footer);
 });
 
-// Anthropic palette
-const C = { clay:'#d97757', kraft:'#d4a27f', oat:'#e3dacc', slate:'#3d3d3a', muted:'#87867f' };
-Chart.defaults.font.family = "'Poppins','Noto Sans JP',sans-serif";
-Chart.defaults.color = '#3d3d3a';
+// Journal palette（clinical blue 1色 + 無彩色グレー）
+const C = { clay:'#1a5fb4', kraft:'#6b7280', oat:'#dde3ea', slate:'#16191f', muted:'#5c6470' };
+Chart.defaults.font.family = "'Inter','Noto Sans JP',sans-serif";
+Chart.defaults.color = '#16191f';
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 Chart.defaults.animation = false;
 
@@ -2423,7 +2482,7 @@ new Chart(document.getElementById('chartROC'), {
       {
         label: 'ランダム',
         data: [{x:0,y:0},{x:100,y:100}],
-        borderColor: '#e3dacc',
+        borderColor: '#dde3ea',
         borderWidth: 1,
         pointRadius: 0,
         borderDash: [3,3],
@@ -2463,7 +2522,7 @@ new Chart(document.getElementById('chartCourse'), {
     plugins: { legend: { display: false } },
     scales: {
       x: { display: false },
-      y: { min: 36, max: 40.5, display: true, ticks: { font: { size: 12 } }, grid: { color: 'rgba(227,218,204,.3)' } }
+      y: { min: 36, max: 40.5, display: true, ticks: { font: { size: 12 } }, grid: { color: 'rgba(221,227,234,.3)' } }
     }
   }
 });
@@ -2471,7 +2530,7 @@ new Chart(document.getElementById('chartCourse'), {
 // Waterfall Plot: 腫瘍径変化率
 (() => {
   const vals = [-72,-65,-58,-52,-48,-45,-42,-38,-35,-31,-28,-24,-20,-15,-10,-5,0,5,8,12,18,25,32,40];
-  const colors = vals.map(v => v > 0 ? '#dc2626' : '#d97757');
+  const colors = vals.map(v => v > 0 ? '#dc2626' : '#1a5fb4');
   new Chart(document.getElementById('chartWaterfall'), {
     type: 'bar',
     data: {
@@ -2494,7 +2553,7 @@ new Chart(document.getElementById('chartCourse'), {
         x: { display: false },
         y: {
           title: { display: true, text: '腫瘍径変化率 (%)' },
-          grid: { color: 'rgba(227,218,204,.3)' }
+          grid: { color: 'rgba(221,227,234,.3)' }
         }
       }
     },
@@ -2506,14 +2565,14 @@ new Chart(document.getElementById('chartCourse'), {
         const ctx = chart.ctx;
         ctx.save();
         ctx.setLineDash([6,4]);
-        ctx.strokeStyle = '#87867f';
+        ctx.strokeStyle = '#5c6470';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.moveTo(chart.chartArea.left, y);
         ctx.lineTo(chart.chartArea.right, y);
         ctx.stroke();
-        ctx.fillStyle = '#87867f';
-        ctx.font = '11px Poppins';
+        ctx.fillStyle = '#5c6470';
+        ctx.font = '11px Inter';
         ctx.fillText('PR (-30%)', chart.chartArea.right - 60, y - 6);
         ctx.restore();
       }
@@ -2546,7 +2605,7 @@ new Chart(document.getElementById('chartCourse'), {
           label: '95% CI boundary (left)',
           data: funnelLeft,
           type: 'line',
-          borderColor: '#e3dacc',
+          borderColor: '#dde3ea',
           borderWidth: 1.5,
           borderDash: [4,3],
           pointRadius: 0,
@@ -2556,7 +2615,7 @@ new Chart(document.getElementById('chartCourse'), {
           label: '95% CI boundary (right)',
           data: funnelRight,
           type: 'line',
-          borderColor: '#e3dacc',
+          borderColor: '#dde3ea',
           borderWidth: 1.5,
           borderDash: [4,3],
           pointRadius: 0,
@@ -2566,7 +2625,7 @@ new Chart(document.getElementById('chartCourse'), {
           label: '統合効果量',
           data: [{x:pooled,y:0},{x:pooled,y:0.30}],
           type: 'line',
-          borderColor: '#3d3d3a',
+          borderColor: '#16191f',
           borderWidth: 1,
           borderDash: [2,2],
           pointRadius: 0,
