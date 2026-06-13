@@ -23,6 +23,7 @@
     if (['ArrowRight', 'ArrowDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
     if (['ArrowLeft', 'ArrowUp'].includes(e.key))         { e.preventDefault(); prev(); }
     if (e.key === 'f' || e.key === 'F')                   { toggleFullscreen(); }
+    if (e.key === 'g' || e.key === 'G')                   { document.body.classList.toggle('grid-on'); }
   });
 
   // ── デッキクリック（ナビUI除く）──
@@ -96,8 +97,28 @@
     });
   }
 
+  // ── スライドグリッド・オーバーレイを注入（Gキーで表示） ──
+  function injectGrid() {
+    const deck = document.querySelector('.deck');
+    if (!deck || deck.querySelector('.grid-overlay')) return;
+    const cols = Number(getComputedStyle(document.documentElement)
+      .getPropertyValue('--grid-cols')) || 12;
+    const ov = document.createElement('div');
+    ov.className = 'grid-overlay';
+    ov.setAttribute('aria-hidden', 'true');
+    let spans = '';
+    for (let i = 1; i <= cols; i++) spans += `<span data-n="${i}"></span>`;
+    ov.innerHTML =
+      `<div class="g-base"></div>` +
+      `<div class="g-cols">${spans}</div>` +
+      `<div class="g-frame"></div>` +
+      `<div class="g-label">GRID · G</div>`;
+    deck.appendChild(ov);
+  }
+
   window.addEventListener('resize', scaleDeck);
   scaleDeck();
   injectPageNumbers();
+  injectGrid();
   show(0);
 })();
