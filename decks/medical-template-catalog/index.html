@@ -310,31 +310,37 @@
     .forest-hr { font-weight: 600; color: #16191f; text-align: right; }
 
     /* === PICO表 === */
+    /* グリッドに乗せる：カードを cols1-6 / 7-12 に置き、縦は2行で充填。
+       中央フロート(max-width/auto)を廃し、列のガター(24px)＝6/7のカラム線に合わせる。 */
     .pico-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 720px;
-      margin: 0 auto;
+      grid-template-rows: 1fr 1fr;
+      column-gap: var(--grid-gutter, 24px);
+      row-gap: var(--grid-gutter, 24px);
+      flex: 1;
     }
     .pico-cell {
       background: #fff;
       border: 1px solid #dde3ea;
       border-radius: 2px;
-      padding: 24px 28px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .pico-cell .pico-letter {
       display: inline-block;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #1a5fb4;
       color: #fff;
       font-weight: 700;
       font-size: 18px;
       text-align: center;
-      line-height: 38px;
-      margin-bottom: 10px;
+      line-height: 40px;
+      margin-bottom: 16px;
     }
     .pico-cell h4 {
       font-size: 14px;
@@ -342,9 +348,10 @@
       color: #5c6470;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      line-height: 24px;
+      margin-bottom: 8px;
     }
-    .pico-cell p { font-size: 18px; color: #16191f; line-height: 1.7; }
+    .pico-cell p { font-size: 19px; color: #16191f; line-height: 32px; }
 
     /* === バイアスリスク（Traffic Light） === */
     .rob-table {

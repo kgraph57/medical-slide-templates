@@ -163,16 +163,17 @@ body.capture .slide-ui { display: none !important; }
 /* ============================================================
    スライドグリッド（Müller-Brockmann系）＋ Gキーオーバーレイ
    デザインQA用。既定は非表示。Gキーで body.grid-on をトグル。
-   1280×720 / 余白64px / 12カラム / 8pxベースライン。
+   余白はテーマの --sp-xl（=.slide の padding）に自動一致。
+   12カラム / 8pxベースライン。テーマ非依存のマゼンタ線。
    見た目には一切影響しない（grid-on の時だけ重なる）。
    ============================================================ */
 :root {
-  --grid-margin:   64px;
+  --grid-margin:   var(--sp-xl, 64px);
   --grid-cols:     12;
   --grid-gutter:   24px;
   --grid-baseline: 8px;
   --grid-lead:     24px;            /* leading = 3 × baseline */
-  --grid-fill:     rgba(0,120,255,.05);
+  --grid-fill:     rgba(232,28,92,.05);
   --grid-line:     rgba(232,28,92,.55);   /* クラシックな製図マゼンタ */
   --grid-minor:    rgba(232,28,92,.14);
 }
