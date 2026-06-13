@@ -2,7 +2,7 @@
 
 学会発表・抄読会・症例報告・教育講演に特化した医学スライドをHTML+CSSで生成するスキル。
 国際学会（AHA/ASCO/ASH）のガイドラインに準拠したデザイン。
-**slide-starterのエンジン（engine/slide.css + engine/slide.js）とテーマ（theme/anthropic.css）を直接参照する。**
+**slide-starterのエンジン（engine/slide.css + engine/slide.js）とテーマ（theme/journal.css）を直接参照する。**
 
 トリガー: '学会スライド', '抄読会スライド', '症例報告スライド', '教育スライド', 'medical slide', 'journal club slide', 'case report slide', 'lecture slide', '発表スライド（医学）'
 
@@ -61,16 +61,16 @@
 
 ## CRITICAL: アーキテクチャ
 
-anthropic-slide-styleと同じエンジン・テーマを使用する。医学特有のCSSは`<style>`に書く。
+slide-starterと同じエンジンを使い、テーマは `theme/journal.css`（白背景・臨床ブルー1色のジャーナル水準）を使用する。医学特有のCSSは`<style>`に書く。
 
 ```html
 <head>
   <link rel="stylesheet" href="engine/slide.css">
-  <link rel="stylesheet" href="theme/anthropic.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme/journal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .slide h1 { font-family: "Noto Serif JP", serif; }
+    /* 見出しはテーマの中立グロテスクを継承（明朝の重い見出しは使わない） */
     /* 医学特有のCSSをここに書く */
   </style>
 </head>
@@ -810,7 +810,7 @@ vital-signs（バイタルサイン）:
 ※ .vitals-grid: 3x2 grid, gap 16px, max-width 600px
 ※ .vital-card: border 1px solid #e3dacc, border-radius 10px
 ※ .vital-label: 14px Muted色 大文字
-※ .vital-value: 32px Poppins太字
+※ .vital-value: 32px 太字（等幅桁 tabular-nums）
 ※ .vital-unit: 14px Muted色
 ※ .vital-normal: #3d3d3a, .vital-abnormal: #dc2626
 
@@ -1293,7 +1293,7 @@ anthopic-slide-styleの汎用テンプレートをそのまま使用:
 
 ## CSSコンポーネントリファレンス
 
-医学特有のCSSクラスは `<style>` 内に定義する（theme/anthropic.cssには含まれない）:
+医学特有のCSSクラスは `<style>` 内に定義する（theme/journal.cssには含まれない）:
 
 | クラス | 用途 | font-size | th/ヘッダー背景 |
 |--------|------|-----------|----------------|
@@ -1366,13 +1366,13 @@ document.querySelectorAll('.slide').forEach((slide, i) => {
 });
 ```
 
-`.slide-footer`: position absolute, bottom 0, height 40px, 12px Poppins, Muted色。
+`.slide-footer`: position absolute, bottom 0, height 40px, 12px Inter, Muted色。
 `.slide-content` には `padding-bottom: 80px !important` を設定してフッターとの重なりを防ぐ。
 
 ## Rules
 
 1. **engine/slide.css と engine/slide.js は直接参照。インライン埋め込み禁止**
-2. **theme/anthropic.css を直接参照**
+2. **theme/journal.css を直接参照**
 3. `<style>` にはスライド固有+医学特有のカスタムCSSを書く
 4. **COI開示スライドは学会発表で必須**（タイトル直後に配置）
 5. **倫理審査情報は臨床研究で必須**

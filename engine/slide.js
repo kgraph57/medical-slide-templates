@@ -83,6 +83,10 @@
   // ── 各スライドにページ番号を注入 ──
   function injectPageNumbers() {
     const all = slides();
+    // デッキが自前のフッター（.slide-footer）を持つなら二重表示になるので注入しない
+    const deck = document.querySelector('.deck');
+    const hasOwnFooter = !!document.querySelector('.slide-footer');
+    if (hasOwnFooter) { deck?.classList.add('has-footer'); return; }
     all.forEach((s, i) => {
       if (s.querySelector('.slide-page-num')) return;
       const span = document.createElement('span');
