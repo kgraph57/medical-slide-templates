@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" style="width:100%;height:auto;display:block" viewBox="0 0 1440 810" role="img" aria-labelledby="comparison-rows-title comparison-rows-desc">
+  <title id="comparison-rows-title">Comparison rows / 比較行</title><desc id="comparison-rows-desc">Three options compared across the same criteria using restrained row rhythm.</desc>
+  <style>:root{--bg:#f7f8fa;--ink:#17212b;--muted:#5b6773;--line:#66717d;--accent:#1a5fb4}text{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}.k{font-size:18px;font-weight:700;letter-spacing:3px;fill:var(--accent)}.t{font-size:48px;font-weight:700;fill:var(--ink)}.s{font-size:22px;fill:var(--muted)}.h{font-size:22px;font-weight:700;fill:var(--ink)}.b{font-size:18px;fill:var(--muted)}.c{font-size:18px;font-weight:700;letter-spacing:2px;fill:var(--muted)}</style>
+  <rect width="1440" height="810" fill="var(--bg)"/><text class="k" x="88" y="80">COMPARISON / 比較</text><text class="t" x="88" y="148">同じ軸で並べて読む</text><text class="s" x="88" y="191">各行は同じ情報構造にする。</text>
+  <line x1="88" y1="270" x2="1352" y2="270" stroke="var(--ink)" stroke-width="2"/><text class="c" x="88" y="312">OPTION</text><text class="c" x="430" y="312">EVIDENCE</text><text class="c" x="800" y="312">TRADE-OFF</text><text class="c" x="1160" y="312">STATE</text>
+  <line x1="88" y1="340" x2="1352" y2="340" stroke="var(--line)"/>
+  <g><text class="h" x="88" y="410">Option A</text><text class="b" x="430" y="410">Verified source</text><text class="b" x="800" y="410">Describe limitation</text><text class="h" x="1160" y="410">Reviewed</text></g><line x1="88" y1="460" x2="1352" y2="460" stroke="var(--line)"/>
+  <g><text class="h" x="88" y="530">Option B</text><text class="b" x="430" y="530">Source pending</text><text class="b" x="800" y="530">Describe limitation</text><text class="h" x="1160" y="530">Unverified</text></g><line x1="88" y1="580" x2="1352" y2="580" stroke="var(--line)"/>
+  <g><text class="h" x="88" y="650">Option C</text><text class="b" x="430" y="650">No source</text><text class="b" x="800" y="650">Do not infer</text><text class="h" x="1160" y="650">Stop</text></g>
+  <line x1="88" y1="734" x2="1352" y2="734" stroke="var(--ink)" stroke-width="2"/><text class="b" x="88" y="778">Use the same criterion order in every row. 比較軸の順番を揃える。</text>
+</svg>

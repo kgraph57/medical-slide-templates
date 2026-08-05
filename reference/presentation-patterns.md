@@ -10,11 +10,11 @@
 05: slide-landing        — 目的（1文）
 06: study-design         — 研究デザイン概要
 07: inclusion-exclusion  — 選択基準・除外基準
-08: consort-flow         — CONSORT図
+08: randomized-study-flow         — ランダム化研究の参加者フロー
 09: statistical-methods  — 統計手法
 10: table-1              — 患者背景
 11: stat                 — 主要結果の数値
-12: Chart.js (bar/line)  — 主要アウトカムのグラフ
+12: data-driven SVG line chart  — 主要アウトカムのグラフ
 13: outcome-summary      — アウトカム一覧
 14: forest-plot          — サブグループ解析
 15: slide-content        — 考察
@@ -31,12 +31,12 @@
 03: slide-content        — 背景
 04: slide-landing        — 目的
 05: slide-content        — 検索戦略
-06: prisma-flow          — PRISMA図
+06: systematic-review-flow          — 系統的レビューの研究選択フロー
 07: evidence-summary     — 採用論文の特徴
 08: forest-plot          — Forest Plot（主要アウトカム）
 09: subgroup-table       — サブグループ解析
 10: funnel-plot          — Funnel Plot
-11: grade-assessment     — GRADE
+11: certainty-assessment   — エビデンス確実性の構造化レビュー
 12: slide-content        — 考察
 13: strengths-limitations — 強みと限界
 14: take-home-message    — 結語
@@ -71,12 +71,12 @@
 03: slide-content        — 臨床的背景
 04: pico-table           — PICO
 05: structured-abstract  — 構造化抄録
-06: consort-flow         — CONSORT図（or prisma-flow）
+06: randomized-study-flow         — ランダム化研究の参加者フロー（or systematic-review-flow）
 07: table-1              — 患者背景
 08: slide-content        — 主要結果
-09: risk-of-bias         — RoB 2
-10: grade-assessment     — GRADE
-11: casp-checklist       — CASP
+09: bias-domain-review   — バイアス要因の構造化レビュー
+10: certainty-assessment   — エビデンス確実性の構造化レビュー
+11: critical-appraisal-questions — 批判的吟味の問い
 12: strengths-limitations — 強みと限界
 13: clinical-bottom-line — Clinical Bottom Line
 14: discussion-points    — ディスカッション

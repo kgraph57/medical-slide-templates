@@ -1,92 +1,40 @@
-# Medical Slide Design Guidelines
+# Medical Slide design guidelines
 
-国際学会（AHA/ASCO/ASH）のスピーカーガイドラインに基づく医学スライドのデザインルール。
+This document summarizes the implemented 2026 visual contract. Enforceable details live in `theme/`, `reference/`, and the browser tests.
 
-## カラーパレット
+## Visual direction
 
-白背景・無彩色を地に、**アクセントはクリニカルブルー1色**。論文図版（NEJM / Lancet / JAMA）の水準に揃える。
+Use a white field, near-black type, neutral rules, and one restrained Clinical Blue accent. Hierarchy comes from type, whitespace, alignment, and thin boundaries. Avoid gradients, ornamental backgrounds, 3D charts, decorative icons, and color that carries meaning alone.
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| White | `#ffffff` | メイン背景 |
-| Ink | `#16191f` | テキスト（ほぼ黒） |
-| Secondary Ink | `#2c333d` | やや弱いテキスト |
-| Muted | `#5c6470` | 控えめテキスト・ラベル |
-| Clinical Blue | `#1a5fb4` | 唯一の差し色（見出し罫・データ点・p値強調） |
-| Border | `#dde3ea` | ヘアライン罫・テーブル横罫 |
-| Card BG | `#f4f6f9` | カード・淡い面 |
-| Neutral Gray | `#6b7280` | データ第2系列（KM対照群・薬剤バー等） |
+## Projector typography
 
-### 医学特有の色（臨床慣習色・例外的に保持）
+- Narrative stage text: 24px or larger.
+- Dense table cells, chart ticks, flow labels, citations, and compact metadata: never below 18px.
+- Slide headings: 40px or larger; title slides may be larger.
+- Use the offline system-font stack in `theme/journal.css`; do not load Google Fonts or other web fonts.
+- Split content when it does not fit. Do not solve overflow by shrinking type.
 
-Traffic light や検査値の高低は、Cochrane RoB 2 等の確立した慣習色のため据え置く。
+Japanese uses `text-wrap: pretty` and `word-break: auto-phrase`. English protects scientific notation, gene names, units, and confidence intervals. See `reference/bilingual-style.md`.
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| Red | `#dc2626` | 異常高値・否定所見・High risk |
-| Blue | `#2563eb` | 異常低値 |
-| Green | `#059669` | 正常・改善・支持所見・Low risk |
-| Amber | `#f59e0b` | 注意・Some concerns |
-| Purple | `#7c3aed` | Very Low（GRADE） |
+## Contrast and redundant meaning
 
-### 禁止ルール
+Normal text meets WCAG AA. Important rules, axes, connectors, controls, and focus indicators meet at least 3:1 against their background. Selected, correct, incorrect, supported, unresolved, and concern states combine explicit words with borders, shapes, symbols, or line styles.
 
-- 背景は白を既定とする（クリーム・グラデーション・ノイズ等の装飾背景は使わない）
-- アクセントは1色（クリニカルブルー）に絞る。装飾的な多色使いをしない
-- フローの矢印はテキスト記号（→ ↓）ではなく描画した罫線コネクタを使う
-- 赤-緑を「対比の意味」で隣接させない（色覚多様性配慮。RoB等の慣習表示は形・記号で冗長化）
-- ネオンカラーは使わない
-- 放射線画像は黒背景で表示
+## Data and diagrams
 
-## タイポグラフィ
+- Draw statistical geometry and displayed values from one validated data object.
+- Ratio forest plots use a logarithmic scale and the correct null value.
+- Kaplan–Meier plots include Number at Risk, censor marks, direct labels, and non-color line styles.
+- Charts include `<title>`, `<desc>`, and an equivalent HTML data table.
+- SVG patterns use a 1440×810 viewBox, responsive root sizing, unique IDs, semantic color variables, and a 16:9 safe area.
+- Directional relationships use drawn connectors and arrowheads, not arrow characters.
 
-中立グロテスク（Inter + Noto Sans JP）に統一。明朝の重い見出しや幾何学フレンドリー書体（Poppins）は使わない。数値は等幅桁（tabular-nums）で揃える。
+The catalog's study-flow, appraisal, bias-factor, and certainty components are original generic patterns. They are not official forms or copied signaling-question taxonomies. Official standards require current source, version, permission, attribution, and license review.
 
-| 要素 | フォント | サイズ |
-|------|---------|--------|
-| h1（タイトル） | Inter + Noto Sans JP (700) | 36-42px |
-| h2（見出し） | Inter + Noto Sans JP (700) | 28-32px |
-| 本文 | Inter + Noto Sans JP | 16-22px |
-| テーブルセル | Inter + Noto Sans JP | 14-16px |
-| テーブルヘッダー | Inter + Noto Sans JP (700) | 14px |
-| ラベル・キャプション | Inter / SF Mono（英字ラベル） | 13-14px |
-| 出典・注釈 | Inter | 13px |
+## Interaction and navigation
 
-## テーブルデザイン
+Use native controls. Targets are at least 44×44px, focus is visible, radio groups support arrow keys, and interacting with a control does not advance the deck. Current slide semantics, Home/End, stable hashes, live status, and reduced-motion behavior come from `engine/slide.js` and `engine/slide.css`.
 
-- booktabs方式: 上罫（2px ink）+ 横罫（1px ヘアライン）のみ。**縦罫線は使わない**
-- ヘッダー背景は薄いブルーグレー `#dde3ea` + テキスト `#16191f`（黒塗りつぶし禁止）
-- 有意差ありのp値は Clinical Blue `#1a5fb4` + 太字
-- 異常値は赤（高値）/ 青（低値）でハイライト
-- 基準範囲は灰色小文字で併記
-- Table 1はスクリーンショット貼り付け禁止（重要3-5項目を再タイプ）
+## Output
 
-## 図表ルール
-
-- 3Dグラフは使用禁止
-- グリッドラインは薄く控えめに
-- 凡例はグラフ内に直接配置
-- KM曲線にはNumber at Risk表を必ず付ける
-- Forest PlotにはHR=1.0線 + Favors Treatment/Control ラベル
-
-## 余白の原則
-
-- スライドのpadding: 上下左右64px（固定、上書きしない）
-- コンテンツとフッターの間: 80px以上
-- 要素間: gap 16-24px
-- カード内: padding 16-24px
-- 1スライドの40-60%がコンテンツ、残りが余白
-
-## 情報密度
-
-- 1スライド = 1メッセージ（One Slide, One Idea）
-- 1枚/分を目安にスライド枚数を設計
-- テキスト要素は6個以下（Rule of Six）
-- コンテンツが多すぎる場合はスライドを分割する
-
-## 参考文献
-
-- Naegle KM. Ten Simple Rules for Effective Presentation Slides. PLoS Comput Biol. 2021;17(12):e1009554.
-- AHA Scientific Sessions — Presenter Guidelines
-- ASCO Annual Meeting — Oral Presenter Guidelines
-- ASH Annual Meeting — Presenter Resources
+Use the bundled localhost server; no internet or external requests are required. Browser HTML is the accessible artifact. PDF is a visually matched handout with one page per slide and is not claimed to be tagged PDF. Validate 1280×720, 1366×768, 1920×1080, and 1024×768 letterbox layouts.

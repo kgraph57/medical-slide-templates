@@ -84,6 +84,19 @@ body {
   background: var(--ui-bg-hover, rgba(0,0,0,.09));
   color: var(--ui-fg-hover, rgba(0,0,0,.85));
 }
+.slide-nav button:focus-visible {
+  outline: 4px solid #1a5fb4;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
 
 /* スクリーンショット撮影モード: ナビUI・カウンタを隠す */
 .deck.capture ~ .slide-ui,
@@ -134,8 +147,14 @@ body.capture .slide-ui { display: none !important; }
     width: 254mm;
     height: 142.875mm;
     z-index: 0;
-    break-after: page;
+    break-after: auto;
+    page-break-after: auto;
     overflow: hidden;
+  }
+
+  .slide + .slide {
+    break-before: page;
+    page-break-before: always;
   }
 
   /* 背景画像フォールバック（CSS background-imageは印刷で消える） */
