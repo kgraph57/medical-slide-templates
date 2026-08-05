@@ -1,0 +1,7 @@
+{
+  "id": "synthetic-ja-journal-club",
+  "sourceStatus": "SYNTHETIC FIXTURE — SOURCE NOT PROVIDED",
+  "controlRisk": 0.16,
+  "treatmentRisk": 0.113,
+  "effect": { "measure": "risk-ratio", "estimate": 0.71, "lower": 0.48, "upper": 1.04 }
+}
