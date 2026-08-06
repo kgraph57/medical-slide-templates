@@ -153,7 +153,8 @@
         border-radius: 3px;
         overflow: hidden;
       }
-      .hero-shot img {
+      .hero-shot img,
+      .hero-shot video {
         display: block;
         width: 100%;
       }
@@ -230,6 +231,12 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+      }
+      .case-shot {
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid var(--border);
+        display: block;
       }
       .case h3 {
         font-size: 19px;
@@ -503,10 +510,16 @@
             </div>
             <div class="arrow-down">↓</div>
             <figure class="hero-shot">
-              <img
-                src="../assets/gallery-title.png"
-                alt="生成されたタイトルスライド（インクバーと大きなタイトル）"
-              />
+              <video
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="画面録画: 生成された抄読会デッキを矢印キーで遷移している様子"
+              >
+                <source src="../assets/demo-ja.mp4" type="video/mp4" />
+              </video>
               <figcaption>
                 生成されるデッキ: 構造化され、出典が示され、そのまま発表できる。
               </figcaption>
@@ -520,6 +533,122 @@
       <div class="wrap">
         <p class="sec-label">How it works</p>
         <h2>3つのステップ。真ん中はジェネレーターではなくゲートです。</h2>
+        <svg
+          viewBox="0 0 960 190"
+          role="img"
+          aria-label="フロー: 自然文の依頼が安全ゲートを通り、発表可能なデッキになる"
+          style="
+            width: 100%;
+            max-width: 960px;
+            margin-top: 40px;
+            display: block;
+          "
+        >
+          <rect
+            x="8"
+            y="40"
+            width="240"
+            height="110"
+            rx="3"
+            fill="#f7f8fa"
+            stroke="#c3cad3"
+            stroke-width="1.5"
+          />
+          <rect x="28" y="62" width="160" height="8" rx="2" fill="#7d8794" />
+          <rect x="28" y="80" width="200" height="8" rx="2" fill="#c3cad3" />
+          <rect x="28" y="98" width="180" height="8" rx="2" fill="#c3cad3" />
+          <text
+            x="28"
+            y="138"
+            font-family="SF Mono, Consolas, monospace"
+            font-size="13"
+            fill="#5f6875"
+          >
+            自然文の依頼
+          </text>
+
+          <line
+            x1="248"
+            y1="95"
+            x2="316"
+            y2="95"
+            stroke="#101418"
+            stroke-width="2"
+          />
+          <path
+            d="M310 89 L318 95 L310 101"
+            fill="none"
+            stroke="#101418"
+            stroke-width="2"
+          />
+
+          <rect
+            x="318"
+            y="24"
+            width="280"
+            height="142"
+            rx="3"
+            fill="#fff"
+            stroke="#101418"
+            stroke-width="2.5"
+          />
+          <text
+            x="458"
+            y="50"
+            text-anchor="middle"
+            font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+            font-size="17"
+            font-weight="700"
+            fill="#101418"
+          >
+            安全ゲート
+          </text>
+          <g
+            font-family="SF Mono, Consolas, monospace"
+            font-size="12.5"
+            fill="#333c47"
+          >
+            <text x="344" y="78">PHI</text>
+            <text x="344" y="100">引用</text>
+            <text x="344" y="122">数値</text>
+            <text x="344" y="144">COI / 倫理</text>
+          </g>
+          <g stroke="#101418" stroke-width="2" fill="none">
+            <path d="M560 72 l5 6 l9 -12" />
+            <path d="M560 94 l5 6 l9 -12" />
+            <path d="M560 116 l5 6 l9 -12" />
+            <path d="M560 138 l5 6 l9 -12" />
+          </g>
+
+          <line
+            x1="598"
+            y1="95"
+            x2="666"
+            y2="95"
+            stroke="#101418"
+            stroke-width="2"
+          />
+          <path
+            d="M660 89 L668 95 L660 101"
+            fill="none"
+            stroke="#101418"
+            stroke-width="2"
+          />
+
+          <rect x="668" y="40" width="284" height="110" rx="3" fill="#101418" />
+          <rect x="692" y="64" width="64" height="5" rx="1" fill="#fff" />
+          <rect x="692" y="80" width="180" height="12" rx="2" fill="#fff" />
+          <rect x="692" y="100" width="140" height="12" rx="2" fill="#7d8794" />
+          <text
+            x="692"
+            y="138"
+            font-family="SF Mono, Consolas, monospace"
+            font-size="13"
+            fill="#c3cad3"
+          >
+            16:9 デッキ · オフライン
+          </text>
+        </svg>
         <div class="how">
           <div class="how-step">
             <h3>依頼する</h3>
@@ -554,6 +683,12 @@
         <h2>医師が実際に行う発表のために設計しています。</h2>
         <div class="cases">
           <div class="case">
+            <img
+              class="case-shot"
+              src="../assets/gallery-table.png"
+              alt="厳密な booktabs スタイルの Table 1 スライド"
+              loading="lazy"
+            />
             <h3>抄読会</h3>
             <div class="ask">
               このRCT論文を、15分の日本語抄読会スライドにして。PICO、バイアスリスク、適用可能性を重視。
@@ -564,6 +699,12 @@
             </p>
           </div>
           <div class="case">
+            <img
+              class="case-shot"
+              src="../assets/gallery-forest.png"
+              alt="主要アウトカムの Forest プロットスライド"
+              loading="lazy"
+            />
             <h3>学会発表</h3>
             <div class="ask">
               この結果を15分の英語学会発表スライドにして。主要アウトカムは
@@ -575,6 +716,12 @@
             </p>
           </div>
           <div class="case">
+            <img
+              class="case-shot"
+              src="../assets/gallery-choice.png"
+              alt="鑑別診断の選択カードスライド"
+              loading="lazy"
+            />
             <h3>症例カンファレンス</h3>
             <div class="ask">
               この匿名化メモから10分の症例カンファレンスデッキを作って。タイムラインと鑑別選択スライドを入れて、不確実性は明示して。
@@ -585,6 +732,12 @@
             </p>
           </div>
           <div class="case">
+            <img
+              class="case-shot"
+              src="../assets/gallery-pico.png"
+              alt="インクバッジの PICO スライド"
+              loading="lazy"
+            />
             <h3>教育講演</h3>
             <div class="ask">
               研修医向けに、敗血症の初期対応の教育スライドを作って。アルゴリズムとクイズ形式の確認問題つきで。
@@ -683,6 +836,217 @@
         <p class="lede">
           このプロジェクトは医療者向けの学術・教育プレゼンテーションを作るものです。患者向け資料、診断、治療選択、臨床意思決定支援ではありません。
         </p>
+        <svg
+          viewBox="0 0 960 240"
+          role="img"
+          aria-label="安全ゲートは検証可能な入力を通過させ、識別子や未検証の主張を含む入力を停止する"
+          style="
+            width: 100%;
+            max-width: 960px;
+            margin-top: 40px;
+            display: block;
+          "
+        >
+          <rect
+            x="8"
+            y="28"
+            width="230"
+            height="72"
+            rx="3"
+            fill="#f7f8fa"
+            stroke="#c3cad3"
+            stroke-width="1.5"
+          />
+          <text
+            x="24"
+            y="58"
+            font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+            font-size="14"
+            font-weight="600"
+            fill="#101418"
+          >
+            匿名化済みノート
+          </text>
+          <text
+            x="24"
+            y="80"
+            font-family="SF Mono, Consolas, monospace"
+            font-size="12"
+            fill="#5f6875"
+          >
+            出典つき
+          </text>
+
+          <rect
+            x="8"
+            y="140"
+            width="230"
+            height="72"
+            rx="3"
+            fill="#f7f8fa"
+            stroke="#c3cad3"
+            stroke-width="1.5"
+          />
+          <text
+            x="24"
+            y="170"
+            font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+            font-size="14"
+            font-weight="600"
+            fill="#101418"
+          >
+            氏名入りノート
+          </text>
+          <text
+            x="24"
+            y="192"
+            font-family="SF Mono, Consolas, monospace"
+            font-size="12"
+            fill="#5f6875"
+          >
+            PHI の可能性
+          </text>
+
+          <line
+            x1="238"
+            y1="64"
+            x2="330"
+            y2="100"
+            stroke="#101418"
+            stroke-width="2"
+          />
+          <line
+            x1="238"
+            y1="176"
+            x2="330"
+            y2="140"
+            stroke="#101418"
+            stroke-width="2"
+          />
+
+          <rect
+            x="330"
+            y="60"
+            width="220"
+            height="120"
+            rx="3"
+            fill="#fff"
+            stroke="#101418"
+            stroke-width="2.5"
+          />
+          <text
+            x="440"
+            y="126"
+            text-anchor="middle"
+            font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+            font-size="17"
+            font-weight="700"
+            fill="#101418"
+          >
+            安全ゲート
+          </text>
+
+          <line
+            x1="550"
+            y1="86"
+            x2="640"
+            y2="56"
+            stroke="#1a5fb4"
+            stroke-width="2"
+          />
+          <path
+            d="M632 52 L642 54 L636 62"
+            fill="none"
+            stroke="#1a5fb4"
+            stroke-width="2"
+          />
+          <g>
+            <rect
+              x="646"
+              y="24"
+              width="306"
+              height="72"
+              rx="3"
+              fill="#fff"
+              stroke="#1a5fb4"
+              stroke-width="2"
+            />
+            <path
+              d="M668 60 l7 8 l13 -17"
+              fill="none"
+              stroke="#1a5fb4"
+              stroke-width="2.5"
+            />
+            <text
+              x="694"
+              y="56"
+              font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+              font-size="14"
+              font-weight="600"
+              fill="#101418"
+            >
+              通過
+            </text>
+            <text
+              x="694"
+              y="78"
+              font-family="SF Mono, Consolas, monospace"
+              font-size="12"
+              fill="#5f6875"
+            >
+              デッキ生成へ進む
+            </text>
+          </g>
+
+          <line
+            x1="550"
+            y1="154"
+            x2="640"
+            y2="184"
+            stroke="#101418"
+            stroke-width="2"
+          />
+          <path
+            d="M636 178 L642 186 L632 188"
+            fill="none"
+            stroke="#101418"
+            stroke-width="2"
+          />
+          <g>
+            <rect
+              x="646"
+              y="144"
+              width="306"
+              height="72"
+              rx="3"
+              fill="#101418"
+            />
+            <path
+              d="M666 172 l16 16 M682 172 l-16 16"
+              stroke="#fff"
+              stroke-width="2.5"
+            />
+            <text
+              x="694"
+              y="176"
+              font-family="Avenir Next, Hiragino Kaku Gothic ProN, sans-serif"
+              font-size="14"
+              font-weight="600"
+              fill="#fff"
+            >
+              停止して確認
+            </text>
+            <text
+              x="694"
+              y="198"
+              font-family="SF Mono, Consolas, monospace"
+              font-size="12"
+              fill="#c3cad3"
+            >
+              匿名化してから続行
+            </text>
+          </g>
+        </svg>
         <table class="safety-table">
           <tr>
             <th>ゲート</th>

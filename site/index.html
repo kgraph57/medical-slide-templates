@@ -53,7 +53,7 @@
   }
   .prompt-card .who { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
   .hero-shot { border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
-  .hero-shot img { display: block; width: 100%; }
+  .hero-shot img, .hero-shot video { display: block; width: 100%; }
   .hero-shot figcaption { padding: 10px 16px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
   .arrow-down { text-align: center; color: var(--muted); font-size: 20px; line-height: 1; }
 
@@ -72,6 +72,7 @@
   /* ── Use cases ── */
   .cases { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .case { border: 1px solid var(--border); border-radius: 3px; padding: 26px; display: flex; flex-direction: column; gap: 12px; }
+  .case-shot { width: 100%; border-radius: 3px; border: 1px solid var(--border); display: block; }
   .case h3 { font-size: 19px; font-weight: 700; }
   .case .ask { background: var(--card); border-radius: 3px; padding: 14px 18px; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: var(--ink-2); }
   .case p { font-size: 14px; color: var(--muted); }
@@ -168,7 +169,9 @@
         </div>
         <div class="arrow-down">↓</div>
         <figure class="hero-shot">
-          <img src="assets/gallery-title.png" alt="Generated title slide with ink bar and large title">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Screen recording: a generated journal club deck being navigated with arrow keys">
+            <source src="assets/demo-en.mp4" type="video/mp4">
+          </video>
           <figcaption>The deck you get: structured, sourced, presentation-ready.</figcaption>
         </figure>
       </div>
@@ -180,6 +183,40 @@
   <div class="wrap">
     <p class="sec-label">How it works</p>
     <h2>Three steps. The middle one is a gate, not a generator.</h2>
+    <svg viewBox="0 0 960 190" role="img" aria-label="Flow: a natural-language request passes through the safety gate and becomes a presentation-ready deck" style="width: 100%; max-width: 960px; margin-top: 40px; display: block;">
+      <rect x="8" y="40" width="240" height="110" rx="3" fill="#f7f8fa" stroke="#c3cad3" stroke-width="1.5"/>
+      <rect x="28" y="62" width="160" height="8" rx="2" fill="#7d8794"/>
+      <rect x="28" y="80" width="200" height="8" rx="2" fill="#c3cad3"/>
+      <rect x="28" y="98" width="180" height="8" rx="2" fill="#c3cad3"/>
+      <text x="28" y="138" font-family="SF Mono, Consolas, monospace" font-size="13" fill="#5f6875">natural language</text>
+
+      <line x1="248" y1="95" x2="316" y2="95" stroke="#101418" stroke-width="2"/>
+      <path d="M310 89 L318 95 L310 101" fill="none" stroke="#101418" stroke-width="2"/>
+
+      <rect x="318" y="24" width="280" height="142" rx="3" fill="#fff" stroke="#101418" stroke-width="2.5"/>
+      <text x="458" y="50" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="17" font-weight="700" fill="#101418">Safety gate</text>
+      <g font-family="SF Mono, Consolas, monospace" font-size="12.5" fill="#333c47">
+        <text x="344" y="78">PHI</text>
+        <text x="344" y="100">Citations</text>
+        <text x="344" y="122">Numbers</text>
+        <text x="344" y="144">COI / ethics</text>
+      </g>
+      <g stroke="#101418" stroke-width="2" fill="none">
+        <path d="M560 72 l5 6 l9 -12"/>
+        <path d="M560 94 l5 6 l9 -12"/>
+        <path d="M560 116 l5 6 l9 -12"/>
+        <path d="M560 138 l5 6 l9 -12"/>
+      </g>
+
+      <line x1="598" y1="95" x2="666" y2="95" stroke="#101418" stroke-width="2"/>
+      <path d="M660 89 L668 95 L660 101" fill="none" stroke="#101418" stroke-width="2"/>
+
+      <rect x="668" y="40" width="284" height="110" rx="3" fill="#101418"/>
+      <rect x="692" y="64" width="64" height="5" rx="1" fill="#fff"/>
+      <rect x="692" y="80" width="180" height="12" rx="2" fill="#fff"/>
+      <rect x="692" y="100" width="140" height="12" rx="2" fill="#7d8794"/>
+      <text x="692" y="138" font-family="SF Mono, Consolas, monospace" font-size="13" fill="#c3cad3">16:9 deck · offline</text>
+    </svg>
     <div class="how">
       <div class="how-step">
         <h3>Describe</h3>
@@ -203,21 +240,25 @@
     <h2>Built for the talks clinicians actually give.</h2>
     <div class="cases">
       <div class="case">
+        <img class="case-shot" src="assets/gallery-table.png" alt="Table 1 slide in strict booktabs style" loading="lazy">
         <h3>Journal club</h3>
         <div class="ask">Turn this RCT into a 15-minute journal club deck in Japanese. Prioritize PICO, risk of bias, and applicability.</div>
         <p>PICO fixed first, effect estimates read with their intervals, certainty left explicit when the source is absent.</p>
       </div>
       <div class="case">
+        <img class="case-shot" src="assets/gallery-forest.png" alt="Forest plot slide for the primary outcome" loading="lazy">
         <h3>Conference talk</h3>
         <div class="ask">Turn these results into a 15-minute conference talk. Forest plot for the primary outcome, Kaplan–Meier for survival, and a Table 1 that passes projection review.</div>
         <p>Deterministic charts derive geometry and labels from one validated data object. Nothing is hand-positioned.</p>
       </div>
       <div class="case">
+        <img class="case-shot" src="assets/gallery-choice.png" alt="Differential diagnosis choice cards" loading="lazy">
         <h3>Case conference</h3>
         <div class="ask">Build a 10-minute case-conference deck from these de-identified notes. Timeline, differential choice, and explicit uncertainty.</p>
         <p>Choice components are keyboard-operable and print-safe. PHI concerns stop the build, not the discussion.</p>
       </div>
       <div class="case">
+        <img class="case-shot" src="assets/gallery-pico.png" alt="PICO slide with ink badges" loading="lazy">
         <h3>Teaching lecture</h3>
         <div class="ask">Create a teaching lecture on initial sepsis management for residents. Include an algorithm and quiz-style check questions.</div>
         <p>Algorithms, checklists, and quiz slides with answer states that remain explicit without color.</p>
@@ -278,6 +319,39 @@
     <p class="sec-label">Safety gate</p>
     <h2>The Skill stops instead of completing missing medical facts.</h2>
     <p class="lede">This project creates clinician-facing academic and teaching presentations. It is not patient material, diagnosis, treatment selection, or clinical decision support.</p>
+    <svg viewBox="0 0 960 240" role="img" aria-label="The safety gate passes verifiable input and stops input that may contain identifiers or unverifiable claims" style="width: 100%; max-width: 960px; margin-top: 40px; display: block;">
+      <rect x="8" y="28" width="230" height="72" rx="3" fill="#f7f8fa" stroke="#c3cad3" stroke-width="1.5"/>
+      <text x="24" y="58" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#101418">De-identified notes</text>
+      <text x="24" y="80" font-family="SF Mono, Consolas, monospace" font-size="12" fill="#5f6875">sources attached</text>
+
+      <rect x="8" y="140" width="230" height="72" rx="3" fill="#f7f8fa" stroke="#c3cad3" stroke-width="1.5"/>
+      <text x="24" y="170" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#101418">Notes with a name</text>
+      <text x="24" y="192" font-family="SF Mono, Consolas, monospace" font-size="12" fill="#5f6875">possible PHI</text>
+
+      <line x1="238" y1="64" x2="330" y2="100" stroke="#101418" stroke-width="2"/>
+      <line x1="238" y1="176" x2="330" y2="140" stroke="#101418" stroke-width="2"/>
+
+      <rect x="330" y="60" width="220" height="120" rx="3" fill="#fff" stroke="#101418" stroke-width="2.5"/>
+      <text x="440" y="126" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="17" font-weight="700" fill="#101418">Safety gate</text>
+
+      <line x1="550" y1="86" x2="640" y2="56" stroke="#1a5fb4" stroke-width="2"/>
+      <path d="M632 52 L642 54 L636 62" fill="none" stroke="#1a5fb4" stroke-width="2"/>
+      <g>
+        <rect x="646" y="24" width="306" height="72" rx="3" fill="#fff" stroke="#1a5fb4" stroke-width="2"/>
+        <path d="M668 60 l7 8 l13 -17" fill="none" stroke="#1a5fb4" stroke-width="2.5"/>
+        <text x="694" y="56" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#101418">Passes</text>
+        <text x="694" y="78" font-family="SF Mono, Consolas, monospace" font-size="12" fill="#5f6875">deck generation proceeds</text>
+      </g>
+
+      <line x1="550" y1="154" x2="640" y2="184" stroke="#101418" stroke-width="2"/>
+      <path d="M636 178 L642 186 L632 188" fill="none" stroke="#101418" stroke-width="2"/>
+      <g>
+        <rect x="646" y="144" width="306" height="72" rx="3" fill="#101418"/>
+        <path d="M666 172 l16 16 M682 172 l-16 16" stroke="#fff" stroke-width="2.5"/>
+        <text x="694" y="176" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="14" font-weight="600" fill="#fff">Stops and asks</text>
+        <text x="694" y="198" font-family="SF Mono, Consolas, monospace" font-size="12" fill="#c3cad3">de-identify before continuing</text>
+      </g>
+    </svg>
     <table class="safety-table">
       <tr><th>Gate</th><th>Behavior</th></tr>
       <tr><td>PHI</td><td>Stops and asks for corrected or de-identified input when patient-identifying information may be present, including DICOM metadata and burned-in image identifiers.</td></tr>
