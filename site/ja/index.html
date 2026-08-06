@@ -1,14 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Medical Slide — Bilingual Claude Skill for clinician-facing decks
-    </title>
+    <title>Medical Slide — 医師のための日英バイリンガル Claude Skill</title>
     <meta
       name="description"
-      content="A bilingual Japanese/English Claude Skill that builds conference talks, journal clubs, case conferences, and teaching lectures as offline 16:9 HTML decks with a medical safety gate."
+      content="医師の自然な依頼から、学会発表・抄読会・症例カンファレンス・研究発表・教育講演の16:9 HTMLスライドを組み立てる、日英バイリンガルの Claude Skill。完全オフライン、医学安全ゲート付き。"
     />
     <style>
       :root {
@@ -38,9 +36,7 @@
         color: var(--ink);
         background: #fff;
         -webkit-font-smoothing: antialiased;
-        line-height: 1.6;
-      }
-      :lang(ja) {
+        line-height: 1.7;
         text-wrap: pretty;
         word-break: auto-phrase;
       }
@@ -50,7 +46,6 @@
         padding: 0 32px;
       }
 
-      /* ── Header ── */
       header {
         border-bottom: 1px solid var(--border);
         padding: 20px 0;
@@ -78,7 +73,6 @@
         color: var(--ink);
       }
 
-      /* ── Hero ── */
       .hero {
         padding: 120px 0 96px;
       }
@@ -90,14 +84,6 @@
         background: var(--ink);
         margin-bottom: 32px;
       }
-      .hero .eyebrow {
-        font-family: var(--mono);
-        font-size: 13px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 20px;
-      }
       .hero h1 {
         font-size: clamp(48px, 8vw, 88px);
         font-weight: 700;
@@ -108,12 +94,12 @@
         margin-top: 28px;
         font-size: 20px;
         color: var(--muted);
-        max-width: 640px;
-        line-height: 1.7;
+        max-width: 680px;
+        line-height: 1.8;
       }
-      .hero .sub-ja {
+      .hero .sub-en {
         margin-top: 14px;
-        font-size: 16px;
+        font-size: 15px;
         color: var(--muted);
         max-width: 640px;
       }
@@ -140,7 +126,6 @@
         color: var(--ink);
       }
 
-      /* ── Sections ── */
       section {
         padding: 88px 0;
         border-top: 1px solid var(--border);
@@ -154,20 +139,19 @@
         margin-bottom: 16px;
       }
       section h2 {
-        font-size: clamp(30px, 4vw, 44px);
+        font-size: clamp(28px, 4vw, 42px);
         font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.15;
-        max-width: 720px;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        max-width: 760px;
       }
       section .lede {
         margin-top: 18px;
-        font-size: 18px;
+        font-size: 17px;
         color: var(--muted);
         max-width: 680px;
       }
 
-      /* ── Demo cards ── */
       .demo-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -210,7 +194,6 @@
         font-weight: 600;
       }
 
-      /* ── Feature list ── */
       .features {
         margin-top: 48px;
         display: grid;
@@ -229,10 +212,9 @@
       .feature p {
         font-size: 15px;
         color: var(--muted);
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
-      /* ── Gallery ── */
       .gallery {
         margin-top: 48px;
         display: grid;
@@ -255,7 +237,6 @@
         border-top: 1px solid var(--border);
       }
 
-      /* ── Install ── */
       .install-steps {
         margin-top: 40px;
         display: flex;
@@ -300,7 +281,6 @@
         color: #8b949e;
       }
 
-      /* ── Safety table ── */
       .safety-table {
         width: 100%;
         margin-top: 40px;
@@ -312,7 +292,6 @@
         text-align: left;
         font-size: 13px;
         letter-spacing: 0.06em;
-        text-transform: uppercase;
         padding: 14px 16px;
         border-bottom: 1px solid var(--ink);
       }
@@ -327,7 +306,6 @@
         white-space: nowrap;
       }
 
-      /* ── Footer ── */
       footer {
         border-top: 1px solid var(--border);
         padding: 40px 0 56px;
@@ -366,14 +344,11 @@
       <div class="wrap">
         <span class="wordmark">Medical Slide</span>
         <nav>
-          <a href="#demo">Demo</a>
-          <a href="#features">Features</a>
-          <a href="#safety">Safety</a>
-          <a href="ja/" hreflang="ja">日本語</a>
-          <a href="#install">Install</a>
-          <a href="https://github.com/kgraph57/medical-slide-templates"
-            >GitHub</a
-          >
+          <a href="#demo">デモ</a>
+          <a href="#features">特徴</a>
+          <a href="#safety">安全ゲート</a>
+          <a href="#install">導入</a>
+          <a href="../" hreflang="en">English</a>
         </nav>
       </div>
     </header>
@@ -382,23 +357,22 @@
       <div class="wrap">
         <h1>Medical Slide</h1>
         <p class="sub">
-          A bilingual Claude Skill that turns a clinician's natural-language
-          request into a presentation-ready 16:9 deck: conference talks, journal
-          clubs, case conferences, research presentations, and teaching
-          lectures.
-        </p>
-        <p class="sub-ja" lang="ja">
-          医師の自然な依頼から、学会発表・抄読会・症例カンファレンス・教育講演の16:9
+          医師の自然な依頼から、学会発表・抄読会・症例カンファレンス・研究発表・教育講演の16:9
           HTMLスライドを組み立てる、日英バイリンガルの Claude Skill
           です。完全オフライン、医学安全ゲート付き。
+        </p>
+        <p class="sub-en" lang="en">
+          A bilingual Claude Skill that turns a clinician's natural-language
+          request into a presentation-ready 16:9 deck. Fully offline, with a
+          medical safety gate.
         </p>
         <div class="cta">
           <a
             class="btn btn-primary"
-            href="decks/medical-template-catalog/index.html"
-            >Open the live catalog</a
+            href="../decks/medical-template-catalog/index.html"
+            >ライブカタログを開く</a
           >
-          <a class="btn btn-secondary" href="#install">Install the Skill</a>
+          <a class="btn btn-secondary" href="#install">Skill を導入する</a>
         </div>
       </div>
     </div>
@@ -407,34 +381,35 @@
       <div class="wrap">
         <p class="sec-label">Live demo</p>
         <h2>
-          Every artifact below is a local HTML deck. No server, no CDN, no
-          tracking.
+          以下の成果物はすべてローカル HTML デッキ。サーバー不要、CDN
+          なし、トラッキングなし。
         </h2>
         <p class="lede">
-          The catalog and both example decks are synthetic and permanently
-          marked. They demonstrate structure and safety behavior, not medical
-          recommendations.
+          カタログと実例デッキはすべて合成データで、恒久的なマーカー付きです。構造と安全動作を示すものであり、医学的推奨ではありません。
         </p>
         <div class="demo-grid">
-          <a class="demo-card" href="decks/medical-template-catalog/index.html">
+          <a
+            class="demo-card"
+            href="../decks/medical-template-catalog/index.html"
+          >
             <span class="lang">66 slides</span>
-            <h3>Template catalog</h3>
+            <h3>テンプレートカタログ</h3>
             <p>
-              The full component library: charts, flows, choice cards, tables,
-              and SVG diagram patterns.
+              チャート、フロー、選択カード、表、SVG
+              図解パターンの全コンポーネントライブラリ。
             </p>
-            <span class="open">Open →</span>
+            <span class="open">開く →</span>
           </a>
-          <a class="demo-card" href="examples/ja-journal-club/index.html">
+          <a class="demo-card" href="../examples/ja-journal-club/index.html">
             <span class="lang">日本語</span>
             <h3>抄読会デッキ</h3>
             <p>
               合成 RCT
-              の日本語抄読会。PICO、バイアスリスク、NNT、適用可能性の構成例。
+              の日本語抄読会。PICO、効果推定値と不確実性、確実性評価の構成例。
             </p>
             <span class="open">開く →</span>
           </a>
-          <a class="demo-card" href="examples/en-journal-club/index.html">
+          <a class="demo-card" href="../examples/en-journal-club/index.html">
             <span class="lang">English</span>
             <h3>Journal club deck</h3>
             <p>
@@ -443,7 +418,7 @@
             </p>
             <span class="open">Open →</span>
           </a>
-          <a class="demo-card" href="examples/en-case-conference/index.html">
+          <a class="demo-card" href="../examples/en-case-conference/index.html">
             <span class="lang">English</span>
             <h3>Case conference</h3>
             <p>
@@ -459,57 +434,50 @@
     <section id="features">
       <div class="wrap">
         <p class="sec-label">Features</p>
-        <h2>
-          Built for the standards of an international conference, not a template
-          gallery.
-        </h2>
+        <h2>テンプレート集ではなく、国際学会の水準で設計。</h2>
         <div class="features">
           <div class="feature">
-            <h3>Deterministic medical charts</h3>
+            <h3>決定論的な医学チャート</h3>
             <p>
-              Forest plots, Kaplan–Meier curves, ROC, waterfall, and funnel
-              charts derive geometry and labels from one validated data object.
-              No hand-positioned values.
+              Forest プロット、Kaplan–Meier 曲線、ROC、Waterfall、Funnel
+              は、検証済みの1つのデータオブジェクトから幾何とラベルを導出します。手配置の数値はありません。
             </p>
           </div>
           <div class="feature">
-            <h3>Choice components</h3>
+            <h3>選択コンポーネント</h3>
             <p>
-              Six native-HTML contracts for differentials, confidence scales,
-              and decision options: keyboard-operable, print-safe, and
-              meaningful without color.
+              鑑別診断、確信度スケール、意思決定オプションの6つのネイティブ HTML
+              契約。キーボード操作可能、印刷安全、色なしでも意味が通じます。
             </p>
           </div>
           <div class="feature">
-            <h3>Bilingual by design</h3>
+            <h3>設計からバイリンガル</h3>
             <p>
-              Japanese and English are equal source languages. Natural clinical
-              Japanese with <code>word-break: auto-phrase</code>; English
-              preserves abbreviations, units, and drug names.
+              日本語と英語を対等なソース言語として扱います。自然な臨床日本語は
+              <code>word-break: auto-phrase</code
+              >、英語は略語・単位・薬剤名を保持します。
             </p>
           </div>
           <div class="feature">
-            <h3>Fully offline</h3>
+            <h3>完全オフライン</h3>
             <p>
-              No web fonts, no CDN, no runtime dependencies. The bundled server
-              binds to 127.0.0.1 and makes zero external requests (verified by
-              automated tests).
+              Web フォントなし、CDN なし、ランタイム依存なし。同梱サーバーは
+              127.0.0.1 のみにバインドし、外部リクエスト 0
+              を自動テストで検証しています。
             </p>
           </div>
           <div class="feature">
-            <h3>Projection-legible</h3>
+            <h3>投影可読性</h3>
             <p>
-              An enforced 18px floor for body and data text, checked at four
-              viewport sizes with automated overflow detection and slide/PDF
-              page parity.
+              本文・データ文字に 18px の下限を強制。4つのビューポートで自動
+              overflow 検出、スライド数と PDF ページ数の一致を検査します。
             </p>
           </div>
           <div class="feature">
-            <h3>Accessible output</h3>
+            <h3>アクセシブルな出力</h3>
             <p>
-              Semantic headings, labeled figures, focus-visible controls, and
-              axe scans with zero serious or critical violations in the test
-              gate.
+              セマンティックな見出し、ラベル付き図表、可視フォーカス。テストゲートで
+              axe の serious/critical 違反 0 を確認しています。
             </p>
           </div>
         </div>
@@ -519,59 +487,52 @@
     <section id="safety">
       <div class="wrap">
         <p class="sec-label">Safety gate</p>
-        <h2>The Skill stops instead of completing missing medical facts.</h2>
+        <h2>Skill は不足した医学的事実を「補完」せず、停止します。</h2>
         <p class="lede">
-          This project creates clinician-facing academic and teaching
-          presentations. It is not patient material, diagnosis, treatment
-          selection, or clinical decision support.
+          このプロジェクトは医療者向けの学術・教育プレゼンテーションを作るものです。患者向け資料、診断、治療選択、臨床意思決定支援ではありません。
         </p>
         <table class="safety-table">
           <tr>
-            <th>Gate</th>
-            <th>Behavior</th>
+            <th>ゲート</th>
+            <th>動作</th>
           </tr>
           <tr>
             <td>PHI</td>
             <td>
-              Stops and asks for corrected or de-identified input when
-              patient-identifying information may be present, including DICOM
-              metadata and burned-in image identifiers.
+              患者識別情報の可能性がある場合（DICOM
+              メタデータや画像への焼き込みを含む）、修正または匿名化された入力を求めて停止します。
             </td>
           </tr>
           <tr>
-            <td>Citations</td>
+            <td>引用</td>
             <td>
-              Blocks final status when a citation, DOI, PMID, or guideline
-              version cannot be verified. Never invents a reference.
+              引用、DOI、PMID、ガイドライン版が検証できない場合、最終状態をブロックします。文献を捏造しません。
             </td>
           </tr>
           <tr>
-            <td>Numbers</td>
+            <td>数値</td>
             <td>
-              Flags conflicts in denominators, percentages, units, confidence
-              intervals, p values, and flow totals before preview.
+              分母、パーセント、単位、信頼区間、p
+              値、フロー合計の矛盾をプレビュー前に検出します。
             </td>
           </tr>
           <tr>
-            <td>COI / ethics</td>
+            <td>COI・倫理</td>
             <td>
-              Never defaults COI to none or ethics to approved. Unanswered
-              required fields stay <code>未確認</code> /
-              <code>SOURCE NOT PROVIDED</code>.
+              COI
+              を既定で「なし」、倫理を既定で「承認済み」にしません。未回答の必須項目は
+              <code>未確認</code> /
+              <code>SOURCE NOT PROVIDED</code> のまま残ります。
             </td>
           </tr>
           <tr>
-            <td>Images</td>
-            <td>
-              Asks for provenance, license, consent, or permission when image
-              rights are unknown.
-            </td>
+            <td>画像</td>
+            <td>来歴、ライセンス、同意、許可が不明な画像は使用しません。</td>
           </tr>
           <tr>
-            <td>Synthetic content</td>
+            <td>合成コンテンツ</td>
             <td>
-              Every catalog and example slide carries a permanent visible marker
-              and must never be reused as evidence.
+              カタログと実例の全スライドに恒久的な可視マーカーがあり、エビデンスとして再利用できません。
             </td>
           </tr>
         </table>
@@ -582,14 +543,14 @@
       <div class="wrap">
         <p class="sec-label">Install</p>
         <h2>
-          Install the complete directory: the Skill needs its engine, theme, and
-          references.
+          完全なディレクトリを導入してください。Skill
+          はエンジン・テーマ・リファレンスを必要とします。
         </h2>
         <div class="install-steps">
           <div class="step">
             <span class="n">01</span>
             <div class="body">
-              <h3>Clone the repository</h3>
+              <h3>リポジトリをクローン</h3>
               <pre>
 git clone https://github.com/kgraph57/medical-slide-templates.git
 cd medical-slide-templates</pre>
@@ -598,7 +559,7 @@ cd medical-slide-templates</pre>
           <div class="step">
             <span class="n">02</span>
             <div class="body">
-              <h3>Install as a Claude Skill</h3>
+              <h3>Claude Skill として導入</h3>
               <pre>
 node scripts/install-skill.mjs --dest "$HOME/.claude/skills/medical-slide"</pre>
             </div>
@@ -606,7 +567,7 @@ node scripts/install-skill.mjs --dest "$HOME/.claude/skills/medical-slide"</pre>
           <div class="step">
             <span class="n">03</span>
             <div class="body">
-              <h3>Ask in natural language</h3>
+              <h3>自然文で依頼する</h3>
               <pre><span class="c"># このRCT論文を、15分の日本語抄読会スライドにして。</span>
 <span class="c"># Build a 10-minute English case-conference deck from these notes.</span></pre>
             </div>
@@ -619,65 +580,63 @@ node scripts/install-skill.mjs --dest "$HOME/.claude/skills/medical-slide"</pre>
       <div class="wrap">
         <p class="sec-label">Gallery</p>
         <h2>
-          Journal Editorial × Keynote Minimal: ink-first, color reserved for
-          data.
+          Journal Editorial × Keynote
+          Minimal。インク主体、色はデータのために温存。
         </h2>
         <div class="gallery">
           <figure>
             <img
-              src="assets/gallery-title.png"
-              alt="Title slide with a short ink bar and large title"
-              loading="lazy"
-            />
-            <figcaption>Title: ink bar, 80px title, quiet metadata</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/gallery-forest.png"
-              alt="Forest plot slide"
+              src="../assets/gallery-title.png"
+              alt="短いインクバーと大きなタイトルのタイトルスライド"
               loading="lazy"
             />
             <figcaption>
-              Forest plot — geometry and labels from one data object
+              タイトル: インクバー、80px タイトル、静かなメタ情報
             </figcaption>
           </figure>
           <figure>
             <img
-              src="assets/gallery-km.png"
-              alt="Kaplan-Meier slide"
+              src="../assets/gallery-forest.png"
+              alt="Forest プロットのスライド"
               loading="lazy"
             />
             <figcaption>
-              Kaplan–Meier — number at risk, censoring, source data
+              Forest プロット: 1つのデータオブジェクトから幾何とラベルを導出
             </figcaption>
           </figure>
           <figure>
             <img
-              src="assets/gallery-table.png"
-              alt="Table 1 slide in booktabs style"
-              loading="lazy"
-            />
-            <figcaption>Table 1: strict booktabs, three rules only</figcaption>
-          </figure>
-          <figure>
-            <img
-              src="assets/gallery-pico.png"
-              alt="PICO slide with ink badges"
+              src="../assets/gallery-km.png"
+              alt="Kaplan-Meier のスライド"
               loading="lazy"
             />
             <figcaption>
-              PICO — structural badges in ink, not decoration
+              Kaplan–Meier: Number at Risk、打ち切り、ソースデータを明示
             </figcaption>
           </figure>
           <figure>
             <img
-              src="assets/gallery-choice.png"
-              alt="Differential diagnosis choice cards"
+              src="../assets/gallery-table.png"
+              alt="booktabs スタイルの Table 1 スライド"
               loading="lazy"
             />
-            <figcaption>
-              Differential choice — quiet surface, explicit state
-            </figcaption>
+            <figcaption>Table 1: 厳密な booktabs、3本罫のみ</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../assets/gallery-pico.png"
+              alt="インクバッジの PICO スライド"
+              loading="lazy"
+            />
+            <figcaption>PICO: 装飾ではなく構造を示すインクバッジ</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../assets/gallery-choice.png"
+              alt="鑑別診断の選択カード"
+              loading="lazy"
+            />
+            <figcaption>鑑別選択: 静かな面、明示的な状態</figcaption>
           </figure>
         </div>
       </div>
@@ -686,8 +645,8 @@ node scripts/install-skill.mjs --dest "$HOME/.claude/skills/medical-slide"</pre>
     <footer>
       <div class="wrap">
         <p>
-          MIT · Copyright 2026 Ken Okamoto · Synthetic examples only: not for
-          clinical or academic use
+          MIT · Copyright 2026 Ken Okamoto ·
+          合成例のみ。臨床・学術利用には使えません
         </p>
         <a href="https://github.com/kgraph57/medical-slide-templates"
           >github.com/kgraph57/medical-slide-templates</a

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" data-await-example="true">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Synthetic journal club example</title>
+    <link rel="stylesheet" href="../../engine/slide.css" />
+    <link rel="stylesheet" href="../../theme/journal.css" />
+    <link rel="stylesheet" href="../../theme/components.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide slide-title">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <p class="label">JOURNAL CLUB</p>
+        <h1>Read critically,<br />from verifiable data</h1>
+        <p class="sub">
+          A synthetic English learning example. It does not depict any real
+          paper, institution, or patient.
+        </p>
+        <p class="source-note">
+          Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED
+        </p>
+      </section>
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>Fix the PICO first</h2>
+          <div class="matrix-2x2">
+            <div>
+              <h3>Population</h3>
+              <p>Synthetic cohort</p>
+            </div>
+            <div>
+              <h3>Intervention</h3>
+              <p>Intervention A</p>
+            </div>
+            <div>
+              <h3>Comparison</h3>
+              <p>Comparator B</p>
+            </div>
+            <div>
+              <h3>Outcome</h3>
+              <p>Event occurrence</p>
+            </div>
+          </div>
+          <p class="source-note">
+            Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED
+          </p>
+        </div>
+      </section>
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>Read effect estimates with their uncertainty</h2>
+          <div class="cols-2">
+            <div class="stat">
+              <span class="number" data-example-nnt>—</span
+              ><span class="label">NNT (synthetic)</span>
+            </div>
+            <div class="card">
+              <h3>RR 0.71</h3>
+              <p>95% CI 0.48–1.04</p>
+              <p>Crosses the null</p>
+            </div>
+          </div>
+          <p class="source-note">
+            Calculated only from tests/fixtures/examples/en-journal-club.json
+          </p>
+        </div>
+      </section>
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>Certainty cannot be judged yet</h2>
+          <table>
+            <caption>
+              Evidence certainty review state
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Domain</th>
+                <th scope="col">State</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Traceability of data and methods</th>
+                <td>Not assessed</td>
+              </tr>
+              <tr>
+                <th scope="row">Fit between question and evidence</th>
+                <td>Not assessed</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="source-note">
+            Paper/source not supplied; appraisal remains unverified.
+          </p>
+        </div>
+      </section>
+      <section class="slide slide-landing">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <h2>
+          Do not rush to conclusions.<br />Verify the source and its
+          applicability.
+        </h2>
+        <p class="source-note">
+          SOURCE NOT PROVIDED — not ready for academic use.
+        </p>
+      </section>
+    </main>
+    <script src="../../engine/slide.js"></script>
+    <script type="module">
+      import { numberNeededToTreat } from "../../engine/medical-math.js";
+      const d = await fetch(
+        "../../tests/fixtures/examples/en-journal-club.json",
+      ).then((r) => r.json());
+      document.querySelector("[data-example-nnt]").textContent =
+        numberNeededToTreat({
+          controlRisk: d.controlRisk,
+          treatmentRisk: d.treatmentRisk,
+        }).nnt;
+      document.documentElement.dataset.exampleReady = "true";
+    </script>
+  </body>
+</html>
