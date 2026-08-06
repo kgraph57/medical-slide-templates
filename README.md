@@ -1,5 +1,7 @@
 # Medical Slide
 
+> **Site & live demo: https://kgraph57.github.io/medical-slide-templates/**
+
 医師の自然な依頼から、学会・抄読会・症例カンファレンス・研究発表・教育講演のための16:9 HTMLスライドを組み立てる、日英バイリンガルのClaude Skillです。
 
 テンプレートHTMLを選んでコピーする必要はありません。資料と目的を渡すと、Skillが発表形式を判断し、構成、医学図表、選択UI、SVG図解を選びます。
