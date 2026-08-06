@@ -1,0 +1,6 @@
+{
+  "id": "synthetic-en-case-conference",
+  "sourceStatus": "SYNTHETIC FIXTURE — SOURCE NOT PROVIDED",
+  "timeline": ["Day 0", "Day +1", "Day +3"],
+  "candidates": ["Pattern A", "Pattern B", "Pattern C"]
+}

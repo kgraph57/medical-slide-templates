@@ -1,0 +1,4 @@
+interface:
+  display_name: "Medical Slide"
+  short_description: "Build safe bilingual medical HTML slides"
+  default_prompt: "Use $medical-slide to turn my verified source material into an offline Japanese or English medical presentation."

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" style="width:100%;height:auto;display:block" viewBox="0 0 1440 810" role="img" aria-labelledby="branch-title branch-desc">
+  <title id="branch-title">Branch pattern / 分岐</title><desc id="branch-desc">One observation branches into two explicitly labelled paths.</desc>
+  <style>:root{--bg:#f7f8fa;--ink:#17212b;--muted:#5b6773;--line:#66717d;--accent:#1a5fb4}text{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}.k{font-size:18px;font-weight:700;letter-spacing:3px;fill:var(--accent)}.t{font-size:48px;font-weight:700;fill:var(--ink)}.s{font-size:22px;fill:var(--muted)}.h{font-size:26px;font-weight:700;fill:var(--ink)}.b{font-size:18px;fill:var(--muted)}.box{fill:var(--bg);stroke:var(--ink);stroke-width:3}</style>
+  <rect width="1440" height="810" fill="var(--bg)"/><text class="k" x="88" y="80">BRANCH / 分岐</text><text class="t" x="88" y="148">判断点と選択肢を分ける</text><text class="s" x="88" y="191">矢印文字ではなく、接続線で関係を示す。</text>
+  <rect class="box" x="120" y="365" width="330" height="130" rx="18"/><text class="h" x="165" y="425">Observation</text><text class="b" x="165" y="462">確認した所見</text><circle cx="490" cy="430" r="10" fill="var(--ink)"/>
+  <line x1="500" y1="430" x2="760" y2="330" stroke="var(--line)" stroke-width="3"/><line x1="500" y1="430" x2="760" y2="540" stroke="var(--line)" stroke-width="3"/>
+  <rect class="box" x="760" y="260" width="520" height="140" rx="18"/><text class="h" x="810" y="325">Path A / 経路A</text><text class="b" x="810" y="363">条件を明示</text>
+  <rect class="box" x="760" y="470" width="520" height="140" rx="18"/><text class="h" x="810" y="535">Path B / 経路B</text><text class="b" x="810" y="573">条件を明示</text>
+  <line x1="88" y1="734" x2="1352" y2="734" stroke="var(--ink)" stroke-width="2"/><text class="b" x="88" y="778">Do not encode meaning with color alone. 色だけで意味を表さない。</text>
+</svg>

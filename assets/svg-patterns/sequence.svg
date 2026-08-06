@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" style="width:100%;height:auto;display:block" viewBox="0 0 1440 810" role="img" aria-labelledby="sequence-title sequence-desc">
+  <title id="sequence-title">Sequence pattern / シーケンス</title><desc id="sequence-desc">Four ordered steps connected by a thin baseline.</desc>
+  <style>:root{--bg:#f7f8fa;--ink:#17212b;--muted:#5b6773;--line:#66717d;--accent:#1a5fb4}text{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}.k{font-size:18px;font-weight:700;letter-spacing:3px;fill:var(--accent)}.t{font-size:48px;font-weight:700;fill:var(--ink)}.s{font-size:22px;fill:var(--muted)}.n{font-size:18px;font-weight:700;fill:var(--accent)}.h{font-size:26px;font-weight:700;fill:var(--ink)}.b{font-size:18px;fill:var(--muted)}</style>
+  <rect width="1440" height="810" fill="var(--bg)"/><text class="k" x="88" y="80">SEQUENCE / 順序</text><text class="t" x="88" y="148">4つのステップで示す</text><text class="s" x="88" y="191">1スライド、1つの流れ。</text>
+  <line x1="130" y1="430" x2="1310" y2="430" stroke="var(--line)" stroke-width="3"/>
+  <g><circle cx="190" cy="430" r="18" fill="var(--ink)"/><text class="n" x="166" y="380">01</text><text class="h" x="120" y="505">Observe</text><text class="b" x="120" y="540">観察</text></g>
+  <g><circle cx="540" cy="430" r="18" fill="var(--bg)" stroke="var(--ink)" stroke-width="3"/><text class="n" x="516" y="380">02</text><text class="h" x="470" y="505">Frame</text><text class="b" x="470" y="540">整理</text></g>
+  <g><circle cx="890" cy="430" r="18" fill="var(--bg)" stroke="var(--ink)" stroke-width="3"/><text class="n" x="866" y="380">03</text><text class="h" x="820" y="505">Compare</text><text class="b" x="820" y="540">比較</text></g>
+  <g><circle cx="1240" cy="430" r="18" fill="var(--accent)"/><text class="n" x="1216" y="380">04</text><text class="h" x="1170" y="505">Decide</text><text class="b" x="1170" y="540">判断</text></g>
+  <line x1="88" y1="734" x2="1352" y2="734" stroke="var(--ink)" stroke-width="2"/><text class="b" x="88" y="778">Replace labels with verified content. 検証済みの内容に置き換えてください。</text>
+</svg>

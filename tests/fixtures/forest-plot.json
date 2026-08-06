@@ -1,0 +1,10 @@
+{
+  "measure": "risk-ratio",
+  "domain": [0.25, 2],
+  "rows": [
+    { "label": "Study A", "estimate": 0.7, "lower": 0.52, "upper": 0.94 },
+    { "label": "Study B", "estimate": 0.73, "lower": 0.51, "upper": 1.05 },
+    { "label": "Pooled", "estimate": 0.62, "lower": 0.48, "upper": 0.81, "summary": true }
+  ]
+}
+

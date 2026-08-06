@@ -1,0 +1,20 @@
+{
+  "name": "medical-slide-templates",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:unit && npm run test:content && npm run test:browser",
+    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:content": "node --test tests/content/*.test.mjs && node scripts/validate-catalog.mjs",
+    "test:browser": "playwright test",
+    "validate:skill": "node scripts/validate-skill.mjs",
+    "validate:offline": "node scripts/validate-offline.mjs decks/medical-template-catalog/index.html && node scripts/validate-offline.mjs examples/ja-journal-club/index.html && node scripts/validate-offline.mjs examples/en-case-conference/index.html",
+    "eval:skill": "node scripts/run-skill-eval.mjs",
+    "preview": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "axe-core": "4.12.1"
+  }
+}
