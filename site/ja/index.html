@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medical Slide — 医師のための日英バイリンガル Claude Skill</title>
+    <title>Medical Slide — 言うだけで、学会スライド。</title>
     <meta
       name="description"
-      content="医師の自然な依頼から、学会発表・抄読会・症例カンファレンス・研究発表・教育講演の16:9 HTMLスライドを組み立てる、日英バイリンガルの Claude Skill。完全オフライン、医学安全ゲート付き。"
+      content="医師の自然な依頼から、学会発表・抄読会・症例カンファレンスの16:9 HTMLスライドを組み立てる、日英バイリンガルの Claude Skill。完全オフライン、医学安全ゲート付き。"
     />
     <style>
       :root {
@@ -41,7 +41,7 @@
         word-break: auto-phrase;
       }
       .wrap {
-        max-width: 1080px;
+        max-width: 1120px;
         margin: 0 auto;
         padding: 0 32px;
       }
@@ -74,39 +74,38 @@
       }
 
       .hero {
-        padding: 120px 0 96px;
+        padding: 96px 0 88px;
       }
-      .hero::before {
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 60px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      .hero h1::before {
         content: "";
         display: block;
         width: 64px;
         height: 4px;
         background: var(--ink);
-        margin-bottom: 32px;
-      }
-      .hero h1 {
-        font-size: clamp(48px, 8vw, 88px);
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.04;
+        margin-bottom: 28px;
       }
       .hero .sub {
-        margin-top: 28px;
-        font-size: 20px;
+        margin-top: 24px;
+        font-size: 18px;
         color: var(--muted);
-        max-width: 680px;
         line-height: 1.8;
       }
-      .hero .sub-en {
-        margin-top: 14px;
-        font-size: 15px;
-        color: var(--muted);
-        max-width: 640px;
-      }
       .hero .cta {
-        margin-top: 44px;
+        margin-top: 36px;
         display: flex;
-        gap: 16px;
+        gap: 14px;
         flex-wrap: wrap;
       }
       .btn {
@@ -126,8 +125,53 @@
         color: var(--ink);
       }
 
+      .prompt-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .prompt-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 18px 22px;
+        font-family: var(--mono);
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--ink-2);
+      }
+      .prompt-card .who {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .hero-shot {
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .hero-shot img {
+        display: block;
+        width: 100%;
+      }
+      .hero-shot figcaption {
+        padding: 10px 16px;
+        font-size: 13px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+      .arrow-down {
+        text-align: center;
+        color: var(--muted);
+        font-size: 20px;
+        line-height: 1;
+      }
+
       section {
-        padding: 88px 0;
+        padding: 80px 0;
         border-top: 1px solid var(--border);
       }
       .sec-label {
@@ -139,17 +183,93 @@
         margin-bottom: 16px;
       }
       section h2 {
-        font-size: clamp(28px, 4vw, 42px);
+        font-size: clamp(26px, 3.4vw, 38px);
         font-weight: 700;
         letter-spacing: -0.01em;
         line-height: 1.3;
         max-width: 760px;
       }
       section .lede {
-        margin-top: 18px;
+        margin-top: 16px;
         font-size: 17px;
         color: var(--muted);
         max-width: 680px;
+      }
+
+      .how {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .how-step {
+        border-top: 2px solid var(--ink);
+        padding-top: 20px;
+      }
+      .how-step h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .how-step p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .cases {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .case {
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .case h3 {
+        font-size: 19px;
+        font-weight: 700;
+      }
+      .case .ask {
+        background: var(--card);
+        border-radius: 3px;
+        padding: 14px 18px;
+        font-family: var(--mono);
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--ink-2);
+      }
+      .case p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .numbers {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .num-cell {
+        border-top: 2px solid var(--ink);
+        padding-top: 16px;
+      }
+      .num-cell .v {
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .num-cell .k {
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--muted);
       }
 
       .demo-grid {
@@ -194,47 +314,29 @@
         font-weight: 600;
       }
 
-      .features {
-        margin-top: 48px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 56px;
-      }
-      .feature {
-        padding: 28px 0;
-        border-top: 2px solid var(--ink);
-      }
-      .feature h3 {
-        font-size: 19px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-      .feature p {
-        font-size: 15px;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .gallery {
-        margin-top: 48px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .gallery figure {
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        overflow: hidden;
-      }
-      .gallery img {
-        display: block;
+      .safety-table {
         width: 100%;
+        margin-top: 40px;
+        border-collapse: collapse;
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
       }
-      .gallery figcaption {
-        padding: 12px 16px;
+      .safety-table th {
+        text-align: left;
         font-size: 13px;
-        color: var(--muted);
-        border-top: 1px solid var(--border);
+        letter-spacing: 0.06em;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--ink);
+      }
+      .safety-table td {
+        padding: 14px 16px;
+        font-size: 15px;
+        color: var(--ink-2);
+        vertical-align: top;
+      }
+      .safety-table td:first-child {
+        font-weight: 600;
+        white-space: nowrap;
       }
 
       .install-steps {
@@ -281,29 +383,41 @@
         color: #8b949e;
       }
 
-      .safety-table {
+      .gallery {
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .gallery figure {
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .gallery img {
+        display: block;
         width: 100%;
-        margin-top: 40px;
-        border-collapse: collapse;
-        border-top: 2px solid var(--ink);
-        border-bottom: 2px solid var(--ink);
       }
-      .safety-table th {
-        text-align: left;
+      .gallery figcaption {
+        padding: 12px 16px;
         font-size: 13px;
-        letter-spacing: 0.06em;
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--ink);
+        color: var(--muted);
+        border-top: 1px solid var(--border);
       }
-      .safety-table td {
-        padding: 14px 16px;
-        font-size: 15px;
+
+      .author {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: start;
+      }
+      .author p {
+        font-size: 16px;
         color: var(--ink-2);
-        vertical-align: top;
+        line-height: 1.9;
       }
-      .safety-table td:first-child {
-        font-weight: 600;
-        white-space: nowrap;
+      .author p + p {
+        margin-top: 16px;
       }
 
       footer {
@@ -327,14 +441,22 @@
         font-weight: 600;
       }
 
-      @media (max-width: 860px) {
+      @media (max-width: 900px) {
+        .hero-grid,
+        .author {
+          grid-template-columns: 1fr;
+        }
+        .how,
+        .numbers {
+          grid-template-columns: 1fr 1fr;
+        }
         .demo-grid,
-        .features,
+        .cases,
         .gallery {
           grid-template-columns: 1fr;
         }
         .hero {
-          padding: 80px 0 64px;
+          padding: 64px 0;
         }
       }
     </style>
@@ -344,9 +466,9 @@
       <div class="wrap">
         <span class="wordmark">Medical Slide</span>
         <nav>
+          <a href="#how">仕組み</a>
+          <a href="#cases">ユースケース</a>
           <a href="#demo">デモ</a>
-          <a href="#features">特徴</a>
-          <a href="#safety">安全ゲート</a>
           <a href="#install">導入</a>
           <a href="../" hreflang="en">English</a>
         </nav>
@@ -355,34 +477,160 @@
 
     <div class="hero">
       <div class="wrap">
-        <h1>Medical Slide</h1>
-        <p class="sub">
-          医師の自然な依頼から、学会発表・抄読会・症例カンファレンス・研究発表・教育講演の16:9
-          HTMLスライドを組み立てる、日英バイリンガルの Claude Skill
-          です。完全オフライン、医学安全ゲート付き。
-        </p>
-        <p class="sub-en" lang="en">
-          A bilingual Claude Skill that turns a clinician's natural-language
-          request into a presentation-ready 16:9 deck. Fully offline, with a
-          medical safety gate.
-        </p>
-        <div class="cta">
-          <a
-            class="btn btn-primary"
-            href="../decks/medical-template-catalog/index.html"
-            >ライブカタログを開く</a
-          >
-          <a class="btn btn-secondary" href="#install">Skill を導入する</a>
+        <div class="hero-grid">
+          <div>
+            <h1>言うだけで、<br />学会スライド。</h1>
+            <p class="sub">
+              自然文で依頼するだけで、発表できる16:9デッキが完成します。検証済みチャート、明示された不確実性、医学的事実を捏造せず停止する安全ゲート付き。日英対応、完全オフライン。
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href="#install">3分で試す</a>
+              <a
+                class="btn btn-secondary"
+                href="../decks/medical-template-catalog/index.html"
+                >カタログを見る</a
+              >
+            </div>
+          </div>
+          <div class="prompt-stack">
+            <div class="prompt-card">
+              <span class="who">依頼例</span>
+              このRCT論文を、15分の日本語抄読会スライドにして。PICO、バイアスリスク、適用可能性を重視。
+            </div>
+            <div class="prompt-card" lang="en">
+              <span class="who">Example</span>
+              Build a 10-minute English case-conference deck from these
+              de-identified notes. Use a timeline and differential-choice slide.
+            </div>
+            <div class="arrow-down">↓</div>
+            <figure class="hero-shot">
+              <img
+                src="../assets/gallery-title.png"
+                alt="生成されたタイトルスライド（インクバーと大きなタイトル）"
+              />
+              <figcaption>
+                生成されるデッキ: 構造化され、出典が示され、そのまま発表できる。
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
+
+    <section id="how">
+      <div class="wrap">
+        <p class="sec-label">How it works</p>
+        <h2>3つのステップ。真ん中はジェネレーターではなくゲートです。</h2>
+        <div class="how">
+          <div class="how-step">
+            <h3>依頼する</h3>
+            <p>
+              論文、アブストラクト、メモ、表、CSV
+              を渡して、どんな発表かを伝えます。発表形式・言語・聴衆・時間は
+              Skill が判断します。
+            </p>
+          </div>
+          <div class="how-step">
+            <h3>安全ゲートを通る</h3>
+            <p>
+              PHI、引用、統計、画像権利、COI、倫理の項目を検査。検証できないものは
+              <code>SOURCE NOT PROVIDED</code>
+              のまま残り、最終状態をブロックします。
+            </p>
+          </div>
+          <div class="how-step">
+            <h3>発表する</h3>
+            <p>
+              同梱の localhost サーバーでブラウザ発表するか、1スライド1ページの
+              PDF に印刷。どの時点でもインターネットは不要です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="wrap">
+        <p class="sec-label">Use cases</p>
+        <h2>医師が実際に行う発表のために設計しています。</h2>
+        <div class="cases">
+          <div class="case">
+            <h3>抄読会</h3>
+            <div class="ask">
+              このRCT論文を、15分の日本語抄読会スライドにして。PICO、バイアスリスク、適用可能性を重視。
+            </div>
+            <p>
+              PICO
+              を先に固定し、効果推定値は区間とともに読む。原資料がない確実性は「未評価」のまま明示されます。
+            </p>
+          </div>
+          <div class="case">
+            <h3>学会発表</h3>
+            <div class="ask" lang="en">
+              Turn these results into a 15-minute conference talk. Forest plot
+              for the primary outcome, Kaplan–Meier for survival, and a Table 1
+              that passes projection review.
+            </div>
+            <p>
+              決定論的チャートは、検証済みの1つのデータオブジェクトから幾何とラベルを導出します。手配置の数値はありません。
+            </p>
+          </div>
+          <div class="case">
+            <h3>症例カンファレンス</h3>
+            <div class="ask" lang="en">
+              Build a 10-minute case-conference deck from these de-identified
+              notes. Timeline, differential choice, and explicit uncertainty.
+            </div>
+            <p>
+              選択コンポーネントはキーボード操作可能で印刷安全。PHI
+              の懸念があれば、議論ではなくビルドを停止します。
+            </p>
+          </div>
+          <div class="case">
+            <h3>教育講演</h3>
+            <div class="ask">
+              研修医向けに、敗血症の初期対応の教育スライドを作って。アルゴリズムとクイズ形式の確認問題つきで。
+            </div>
+            <p>
+              アルゴリズム、チェックリスト、クイズスライド。回答状態は色なしでも明示されます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="numbers">
+      <div class="wrap">
+        <p class="sec-label">Verified, not claimed</p>
+        <h2>このページの約束は、すべてテストで裏付けられています。</h2>
+        <div class="numbers">
+          <div class="num-cell">
+            <span class="v">66</span
+            ><span class="k"
+              >カタログコンポーネント（全て合成マーカー付き）</span
+            >
+          </div>
+          <div class="num-cell">
+            <span class="v">56</span
+            ><span class="k">ローカルゲートの自動チェック数</span>
+          </div>
+          <div class="num-cell">
+            <span class="v">0</span
+            ><span class="k">外部リクエスト（テストで検証）</span>
+          </div>
+          <div class="num-cell">
+            <span class="v">0</span
+            ><span class="k">axe serious/critical 違反</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="demo">
       <div class="wrap">
         <p class="sec-label">Live demo</p>
         <h2>
-          以下の成果物はすべてローカル HTML デッキ。サーバー不要、CDN
-          なし、トラッキングなし。
+          今すぐデッキを開けます。サーバー不要、CDN なし、トラッキングなし。
         </h2>
         <p class="lede">
           カタログと実例デッキはすべて合成データで、恒久的なマーカー付きです。構造と安全動作を示すものであり、医学的推奨ではありません。
@@ -427,59 +675,6 @@
             </p>
             <span class="open">Open →</span>
           </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="features">
-      <div class="wrap">
-        <p class="sec-label">Features</p>
-        <h2>テンプレート集ではなく、国際学会の水準で設計。</h2>
-        <div class="features">
-          <div class="feature">
-            <h3>決定論的な医学チャート</h3>
-            <p>
-              Forest プロット、Kaplan–Meier 曲線、ROC、Waterfall、Funnel
-              は、検証済みの1つのデータオブジェクトから幾何とラベルを導出します。手配置の数値はありません。
-            </p>
-          </div>
-          <div class="feature">
-            <h3>選択コンポーネント</h3>
-            <p>
-              鑑別診断、確信度スケール、意思決定オプションの6つのネイティブ HTML
-              契約。キーボード操作可能、印刷安全、色なしでも意味が通じます。
-            </p>
-          </div>
-          <div class="feature">
-            <h3>設計からバイリンガル</h3>
-            <p>
-              日本語と英語を対等なソース言語として扱います。自然な臨床日本語は
-              <code>word-break: auto-phrase</code
-              >、英語は略語・単位・薬剤名を保持します。
-            </p>
-          </div>
-          <div class="feature">
-            <h3>完全オフライン</h3>
-            <p>
-              Web フォントなし、CDN なし、ランタイム依存なし。同梱サーバーは
-              127.0.0.1 のみにバインドし、外部リクエスト 0
-              を自動テストで検証しています。
-            </p>
-          </div>
-          <div class="feature">
-            <h3>投影可読性</h3>
-            <p>
-              本文・データ文字に 18px の下限を強制。4つのビューポートで自動
-              overflow 検出、スライド数と PDF ページ数の一致を検査します。
-            </p>
-          </div>
-          <div class="feature">
-            <h3>アクセシブルな出力</h3>
-            <p>
-              セマンティックな見出し、ラベル付き図表、可視フォーカス。テストゲートで
-              axe の serious/critical 違反 0 を確認しています。
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -542,10 +737,7 @@
     <section id="install">
       <div class="wrap">
         <p class="sec-label">Install</p>
-        <h2>
-          完全なディレクトリを導入してください。Skill
-          はエンジン・テーマ・リファレンスを必要とします。
-        </h2>
+        <h2>クローンから最初のデッキまで、3分。</h2>
         <div class="install-steps">
           <div class="step">
             <span class="n">01</span>
@@ -638,6 +830,37 @@ node scripts/install-skill.mjs --dest "$HOME/.claude/skills/medical-slide"</pre>
             />
             <figcaption>鑑別選択: 静かな面、明示的な状態</figcaption>
           </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="author">
+      <div class="wrap">
+        <p class="sec-label">Author</p>
+        <h2>午前2時のスライド作業にうんざりした、現役小児科医が作りました。</h2>
+        <div class="author" style="margin-top: 32px">
+          <div>
+            <p>
+              Medical Slide
+              は、学会発表や抄読会のための個人ツールとして始まりました。医師が実際に行う発表を、実際の時間制約の中で作るためのツールです。
+            </p>
+            <p>
+              安全ゲートがあるのは、自信満々なシステムが生成する医療コンテンツが現実のリスクだからです。このプロジェクトは、不足した事実を補完するより、停止し、印をつけ、尋ねることを選びます。
+            </p>
+          </div>
+          <div>
+            <p>
+              岡本賢は小児科医で、AI 医療起業家です。臨床実践と応用 AI
+              の交差点で、執筆・教育・ツール開発を行っています。
+            </p>
+            <p style="margin-top: 24px">
+              <a
+                class="btn btn-secondary"
+                href="https://github.com/kgraph57/medical-slide-templates"
+                >GitHub で見る</a
+              >
+            </p>
+          </div>
         </div>
       </div>
     </section>
