@@ -162,9 +162,9 @@
           <span class="who">You ask</span>
           Build a 10-minute English case-conference deck from these de-identified notes. Use a timeline and differential-choice slide, and keep every uncertainty explicit.
         </div>
-        <div class="prompt-card" lang="ja">
-          <span class="who">依頼例</span>
-          このRCT論文を、15分の日本語抄読会スライドにして。PICO、バイアスリスク、適用可能性を重視。
+        <div class="prompt-card">
+          <span class="who">You ask</span>
+          Turn this RCT into a 15-minute journal club deck in Japanese. Prioritize PICO, risk of bias, and applicability.
         </div>
         <div class="arrow-down">↓</div>
         <figure class="hero-shot">
@@ -204,7 +204,7 @@
     <div class="cases">
       <div class="case">
         <h3>Journal club</h3>
-        <div class="ask" lang="ja">このRCT論文を、15分の日本語抄読会スライドにして。PICO、バイアスリスク、適用可能性を重視。</div>
+        <div class="ask">Turn this RCT into a 15-minute journal club deck in Japanese. Prioritize PICO, risk of bias, and applicability.</div>
         <p>PICO fixed first, effect estimates read with their intervals, certainty left explicit when the source is absent.</p>
       </div>
       <div class="case">
@@ -219,7 +219,7 @@
       </div>
       <div class="case">
         <h3>Teaching lecture</h3>
-        <div class="ask" lang="ja">研修医向けに、敗血症の初期対応の教育スライドを作って。アルゴリズムとクイズ形式の確認問題つきで。</div>
+        <div class="ask">Create a teaching lecture on initial sepsis management for residents. Include an algorithm and quiz-style check questions.</div>
         <p>Algorithms, checklists, and quiz slides with answer states that remain explicit without color.</p>
       </div>
     </div>
@@ -252,10 +252,10 @@
         <span class="open">Open →</span>
       </a>
       <a class="demo-card" href="examples/ja-journal-club/index.html">
-        <span class="lang">日本語</span>
-        <h3>抄読会デッキ</h3>
-        <p>合成 RCT の日本語抄読会。PICO、効果推定値と不確実性、確実性評価の構成例。</p>
-        <span class="open">開く →</span>
+        <span class="lang">Japanese deck</span>
+        <h3>Journal club (日本語)</h3>
+        <p>A synthetic RCT appraisal in Japanese: PICO, effect estimates with uncertainty, and certainty review states.</p>
+        <span class="open">Open →</span>
       </a>
       <a class="demo-card" href="examples/en-journal-club/index.html">
         <span class="lang">English</span>
@@ -283,7 +283,7 @@
       <tr><td>PHI</td><td>Stops and asks for corrected or de-identified input when patient-identifying information may be present, including DICOM metadata and burned-in image identifiers.</td></tr>
       <tr><td>Citations</td><td>Blocks final status when a citation, DOI, PMID, or guideline version cannot be verified. Never invents a reference.</td></tr>
       <tr><td>Numbers</td><td>Flags conflicts in denominators, percentages, units, confidence intervals, p values, and flow totals before preview.</td></tr>
-      <tr><td>COI / ethics</td><td>Never defaults COI to none or ethics to approved. Unanswered required fields stay <code>未確認</code> / <code>SOURCE NOT PROVIDED</code>.</td></tr>
+      <tr><td>COI / ethics</td><td>Never defaults COI to none or ethics to approved. Unanswered required fields stay <code>unconfirmed</code> / <code>SOURCE NOT PROVIDED</code>.</td></tr>
       <tr><td>Images</td><td>Asks for provenance, license, consent, or permission when image rights are unknown.</td></tr>
       <tr><td>Synthetic content</td><td>Every catalog and example slide carries a permanent visible marker and must never be reused as evidence.</td></tr>
     </table>
@@ -314,7 +314,7 @@ cd medical-slide-templates</pre>
         <span class="n">03</span>
         <div class="body">
           <h3>Ask in natural language</h3>
-          <pre><span class="c"># このRCT論文を、15分の日本語抄読会スライドにして。</span>
+          <pre><span class="c"># Turn this RCT into a 15-minute journal club deck in Japanese.</span>
 <span class="c"># Build a 10-minute English case-conference deck from these notes.</span></pre>
         </div>
       </div>
