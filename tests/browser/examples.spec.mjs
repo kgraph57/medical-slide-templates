@@ -7,6 +7,11 @@ const examples = [
     lang: "ja",
     expectedNnt: "22",
   },
+  {
+    path: "/examples/en-journal-club/index.html",
+    lang: "en",
+    expectedNnt: "22",
+  },
   { path: "/examples/en-case-conference/index.html", lang: "en" },
 ];
 
@@ -38,7 +43,8 @@ test("print readiness waits for example initialization", async ({ page }) => {
 });
 
 for (const example of examples) {
-  test(`${example.lang} example is offline, accessible, and print-safe`, async ({
+  const name = example.path.split("/")[2];
+  test(`${name} example is offline, accessible, and print-safe`, async ({
     page,
   }) => {
     const externalRequests = [];

@@ -33,7 +33,7 @@ jobs:
           mkdir -p _site/decks _site/examples
           cp -r site/* _site/
           cp -r decks/medical-template-catalog _site/decks/
-          cp -r examples/ja-journal-club examples/en-case-conference _site/examples/
+          cp -r examples/ja-journal-club examples/en-journal-club examples/en-case-conference _site/examples/
           cp -r engine theme _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

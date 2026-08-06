@@ -9,7 +9,7 @@
     "test:content": "node --test tests/content/*.test.mjs && node scripts/validate-catalog.mjs",
     "test:browser": "playwright test",
     "validate:skill": "node scripts/validate-skill.mjs",
-    "validate:offline": "node scripts/validate-offline.mjs decks/medical-template-catalog/index.html && node scripts/validate-offline.mjs examples/ja-journal-club/index.html && node scripts/validate-offline.mjs examples/en-case-conference/index.html",
+    "validate:offline": "node scripts/validate-offline.mjs decks/medical-template-catalog/index.html && node scripts/validate-offline.mjs examples/ja-journal-club/index.html && node scripts/validate-offline.mjs examples/en-journal-club/index.html && node scripts/validate-offline.mjs examples/en-case-conference/index.html",
     "eval:skill": "node scripts/run-skill-eval.mjs",
     "preview": "node scripts/serve.mjs"
   },

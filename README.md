@@ -1,6 +1,8 @@
 # Medical Slide
 
-> **Site & live demo: https://kgraph57.github.io/medical-slide-templates/**
+> **Site & live demo: https://kgraph57.github.io/medical-slide-templates/** ([日本語](https://kgraph57.github.io/medical-slide-templates/ja/))
+
+**English**: A bilingual Japanese/English Claude Skill that turns a clinician's natural-language request into presentation-ready 16:9 HTML decks — conference talks, journal clubs, case conferences, research presentations, and teaching lectures. Fully offline, with a medical safety gate that stops for possible PHI, unverified citations, inconsistent statistics, unknown image rights, and unanswered COI/ethics fields. See [What it produces](#what-it-produces) and [Install as a Skill](#install-as-a-skill) below.
 
 医師の自然な依頼から、学会・抄読会・症例カンファレンス・研究発表・教育講演のための16:9 HTMLスライドを組み立てる、日英バイリンガルのClaude Skillです。
 
@@ -63,6 +65,7 @@ Generated decks use a standalone folder contract. The Skill first runs `node scr
 ## Examples
 
 - [Japanese journal club](examples/ja-journal-club/index.html)
+- [English journal club](examples/en-journal-club/index.html)
 - [English case conference](examples/en-case-conference/index.html)
 
 Both use synthetic fixtures and `SOURCE NOT PROVIDED` where real evidence is absent. They demonstrate structure and safety behavior, not medical recommendations.
