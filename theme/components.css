@@ -5,6 +5,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   min-width: 0;
+  align-content: center;
 }
 
 .choice-list legend {
@@ -68,9 +69,15 @@
   line-height: 1.4;
 }
 .choice-card__state {
-  color: #343a43;
-  font: 700 16px/1 var(--font-mono);
+  color: var(--color-muted);
+  font: 600 13px/1 var(--font-mono);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+}
+.choice-card > input:checked + .choice-card__surface .choice-card__state {
+  opacity: 1;
+  color: var(--color-fg);
 }
 .choice-card > input:checked + .choice-card__surface {
   border-width: 2.5px;
