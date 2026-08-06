@@ -1,8 +1,152 @@
-<!doctype html><html lang="ja" data-await-example="true"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>合成データ抄読会例</title><link rel="stylesheet" href="../../engine/slide.css"><link rel="stylesheet" href="../../theme/journal.css"><link rel="stylesheet" href="../../theme/components.css"></head><body>
-<main class="deck">
-  <section class="slide slide-title"><div class="synthetic-marker" role="note">SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE</div><p class="label">JOURNAL CLUB / 抄読会</p><h1>検証可能なデータから<br>批判的に読む</h1><p class="sub">日本語の学習用合成例。実在の論文・施設・患者を示しません。</p><p class="source-note">Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED</p></section>
-  <section class="slide slide-content"><div class="synthetic-marker" role="note">SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE</div><div class="body"><h2>PICOを先に固定する</h2><div class="matrix-2x2"><div><h3>Population</h3><p>合成集団</p></div><div><h3>Intervention</h3><p>介入A</p></div><div><h3>Comparison</h3><p>比較B</p></div><div><h3>Outcome</h3><p>イベント発生</p></div></div><p class="source-note">Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED</p></div></section>
-  <section class="slide slide-content"><div class="synthetic-marker" role="note">SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE</div><div class="body"><h2>効果推定値は不確実性と読む</h2><div class="cols-2"><div class="stat"><span class="number" data-example-nnt>—</span><span class="label">NNT（合成値）</span></div><div class="card"><h3>RR 0.71</h3><p>95% CI 0.48–1.04</p><p>ヌル値をまたぐ</p></div></div><p class="source-note">Calculated only from tests/fixtures/examples/ja-journal-club.json</p></div></section>
-  <section class="slide slide-content"><div class="synthetic-marker" role="note">SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE</div><div class="body"><h2>確実性はまだ判定できない</h2><table><caption>Evidence certainty review state</caption><thead><tr><th scope="col">領域</th><th scope="col">状態</th></tr></thead><tbody><tr><th scope="row">データと方法の追跡性</th><td>未評価</td></tr><tr><th scope="row">問いと資料の対応</th><td>未評価</td></tr></tbody></table><p class="source-note">Paper/source not supplied; appraisal remains unverified.</p></div></section>
-  <section class="slide slide-landing"><div class="synthetic-marker" role="note">SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE</div><h2>結論を急がず、<br>原典と適用可能性を確認する</h2><p class="source-note">SOURCE NOT PROVIDED — not ready for academic use.</p></section>
-</main><script src="../../engine/slide.js"></script><script type="module">import{numberNeededToTreat}from'../../engine/medical-math.js';const d=await fetch('../../tests/fixtures/examples/ja-journal-club.json').then(r=>r.json());document.querySelector('[data-example-nnt]').textContent=numberNeededToTreat({controlRisk:d.controlRisk,treatmentRisk:d.treatmentRisk}).nnt;document.documentElement.dataset.exampleReady='true';</script></body></html>
+<!doctype html>
+<html lang="ja" data-await-example="true">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>合成データ抄読会例</title>
+    <link rel="stylesheet" href="../../engine/slide.css" />
+    <link rel="stylesheet" href="../../theme/journal.css" />
+    <link rel="stylesheet" href="../../theme/components.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide slide-title">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <p class="label">JOURNAL CLUB / 抄読会</p>
+        <h1>検証可能なデータから<br />批判的に読む</h1>
+        <p class="sub">
+          小児ERの合成RCTを題材にした学習用デッキ。<br />
+          実在の論文・施設・患者は示しません。
+        </p>
+        <p class="source-note">
+          Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED
+        </p>
+      </section>
+
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>PICOを先に固定する</h2>
+          <div class="matrix-2x2">
+            <div>
+              <h3>Population</h3>
+              <p>小児ER受診<br />生後1ヶ月〜15歳</p>
+            </div>
+            <div>
+              <h3>Intervention</h3>
+              <p>AI支援トリアージによる<br />重症度判定</p>
+            </div>
+            <div>
+              <h3>Comparison</h3>
+              <p>看護師による<br />通常JTASトリアージ</p>
+            </div>
+            <div>
+              <h3>Outcome</h3>
+              <p>過少トリアージ率（主要）<br />待ち時間（副次）</p>
+            </div>
+          </div>
+          <p class="source-note">
+            Source: SYNTHETIC FIXTURE — SOURCE NOT PROVIDED
+          </p>
+        </div>
+      </section>
+
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>効果推定値は不確実性と読む</h2>
+          <div class="effect-panel">
+            <div class="stat">
+              <span class="number" data-example-nnt>—</span>
+              <span class="label">NNT（合成値）</span>
+            </div>
+            <div class="card">
+              <h3>RR 0.71</h3>
+              <p>95% CI 0.48–1.04</p>
+              <p class="callout">ヌル値（1.0）をまたぐ</p>
+              <p>ARR 4.7% · 対照イベント率 16%</p>
+            </div>
+          </div>
+          <p class="source-note">
+            Calculated only from tests/fixtures/examples/ja-journal-club.json
+          </p>
+        </div>
+      </section>
+
+      <section class="slide slide-content">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <div class="body">
+          <h2>確実性はまだ判定できない</h2>
+          <table>
+            <caption>
+              Evidence certainty review state（原典未提供）
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">領域</th>
+                <th scope="col">状態</th>
+                <th scope="col">次の確認</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">データと方法の追跡性</th>
+                <td>未評価</td>
+                <td>割付・盲検・解析集団</td>
+              </tr>
+              <tr>
+                <th scope="row">問いと資料の対応</th>
+                <td>未評価</td>
+                <td>PICO一致・外的妥当性</td>
+              </tr>
+              <tr>
+                <th scope="row">効果の大きさの解釈</th>
+                <td>保留</td>
+                <td>CIがヌルをまたぐ</td>
+              </tr>
+              <tr>
+                <th scope="row">COI / 資金源</th>
+                <td>未入力</td>
+                <td>開示文の確認</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="source-note">
+            Paper/source not supplied; appraisal remains unverified.
+          </p>
+        </div>
+      </section>
+
+      <section class="slide slide-landing">
+        <div class="synthetic-marker" role="note">
+          SYNTHETIC EXAMPLE / NOT FOR CLINICAL OR ACADEMIC USE
+        </div>
+        <h2>結論を急がず、<br />原典と適用可能性を確認する</h2>
+        <p class="source-note">
+          SOURCE NOT PROVIDED — not ready for academic use.
+        </p>
+      </section>
+    </main>
+    <script src="../../engine/slide.js"></script>
+    <script type="module">
+      import { numberNeededToTreat } from "../../engine/medical-math.js";
+      const d = await fetch(
+        "../../tests/fixtures/examples/ja-journal-club.json",
+      ).then((r) => r.json());
+      document.querySelector("[data-example-nnt]").textContent =
+        numberNeededToTreat({
+          controlRisk: d.controlRisk,
+          treatmentRisk: d.treatmentRisk,
+        }).nnt;
+      document.documentElement.dataset.exampleReady = "true";
+    </script>
+  </body>
+</html>

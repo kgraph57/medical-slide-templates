@@ -897,16 +897,28 @@
       }
       .synthetic-marker {
         position: absolute;
-        top: 12px;
-        right: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 30;
-        padding: 4px 8px;
-        border: 1px solid #8a93a0;
-        background: rgba(255, 255, 255, 0.96);
-        color: #343a43;
-        font: 700 10px/1.2 var(--font-sans);
+        max-width: none;
+        padding: 4px 16px;
+        border: 0;
+        border-bottom: 1px solid #c3cad3;
+        background: #f7f8fa;
+        color: #5f6875;
+        font: 600 10px/1.3 var(--font-mono);
         letter-spacing: 0.05em;
+        text-align: center;
         pointer-events: none;
+      }
+      .slide:has(.synthetic-marker) {
+        padding-top: calc(var(--sp-xl) + 16px);
+      }
+      .table1 td:not(:first-child),
+      .table1 th:not(:first-child) {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
       }
     </style>
   </head>
@@ -1023,7 +1035,7 @@
         <span class="template-label">table-1 (patient baseline)</span>
         <div class="body">
           <h2>Table 1. 患者背景</h2>
-          <table class="table1">
+          <table class="table1 numeric" data-numeric>
             <tr>
               <th>変数</th>
               <th>介入群 (n=120)</th>
@@ -1082,32 +1094,37 @@
               <div class="participant-flow-box">適格性評価 (n=380)</div>
               <div class="flow-side-connector">→</div>
               <div class="participant-flow-box excluded">
-                除外 (n=145)<br /><span style="font-size: 13px"
-                  >基準未達 82 / 辞退 63</span
-                >
+                除外 (n=145)<br /><span>基準未達 82 / 辞退 63</span>
               </div>
             </div>
             <div class="flow-down-connector">↓</div>
             <div class="flow-phase">Allocation</div>
             <div class="participant-flow-box">ランダム化 (n=235)</div>
             <div class="flow-down-connector">↓</div>
+            <div class="flow-phase">Follow-up</div>
             <div class="participant-flow-split">
               <div style="text-align: center">
                 <div class="participant-flow-box">介入群 (n=120)</div>
                 <div class="flow-down-connector">↓</div>
-                <div class="participant-flow-box" style="font-size: 13px">
+                <div class="participant-flow-box">
                   フォロー完了 113<br />脱落 7
                 </div>
-                <div class="flow-down-connector">↓</div>
-                <div class="participant-flow-box">解析 (n=120, ITT)</div>
               </div>
               <div style="text-align: center">
                 <div class="participant-flow-box">対照群 (n=115)</div>
                 <div class="flow-down-connector">↓</div>
-                <div class="participant-flow-box" style="font-size: 13px">
+                <div class="participant-flow-box">
                   フォロー完了 110<br />脱落 5
                 </div>
-                <div class="flow-down-connector">↓</div>
+              </div>
+            </div>
+            <div class="flow-down-connector">↓</div>
+            <div class="flow-phase">Analysis</div>
+            <div class="participant-flow-split">
+              <div style="text-align: center">
+                <div class="participant-flow-box">解析 (n=120, ITT)</div>
+              </div>
+              <div style="text-align: center">
                 <div class="participant-flow-box">解析 (n=115, ITT)</div>
               </div>
             </div>
@@ -4293,6 +4310,7 @@
 
       renderForestPlot(document.getElementById("chartForest"), {
         measure: "risk-ratio",
+        measureLabel: "Risk ratio",
         domain: [0.25, 2],
         rows: [
           { label: "Study A", estimate: 0.7, lower: 0.52, upper: 0.94 },
@@ -4308,6 +4326,7 @@
       });
 
       renderKaplanMeier(document.getElementById("chartKM"), {
+        timeUnit: "Days",
         timePoints: [0, 7, 14, 21, 28, 35, 42, 49, 56],
         groups: [
           {
