@@ -1,6 +1,15 @@
 # Medical Slide
 
+[![Site](https://img.shields.io/badge/site-live-1a5fb4)](https://kgraph57.github.io/medical-slide-templates/)
+[![License](https://img.shields.io/github/license/kgraph57/medical-slide-templates)](LICENSE)
+
 > **Site & live demo: https://kgraph57.github.io/medical-slide-templates/** ([日本語](https://kgraph57.github.io/medical-slide-templates/ja/))
+
+<p align="center">
+  <a href="https://kgraph57.github.io/medical-slide-templates/">
+    <img src="site/assets/demo-en.gif" alt="Medical Slide demo: English journal club deck advancing through title, PICO, forest plot, and choice slides" width="800">
+  </a>
+</p>
 
 **English**: A bilingual Japanese/English Claude Skill that turns a clinician's natural-language request into presentation-ready 16:9 HTML decks — conference talks, journal clubs, case conferences, research presentations, and teaching lectures. Fully offline, with a medical safety gate that stops for possible PHI, unverified citations, inconsistent statistics, unknown image rights, and unanswered COI/ethics fields. See [What it produces](#what-it-produces) and [Install as a Skill](#install-as-a-skill) below.
 
