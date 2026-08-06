@@ -1,0 +1,16 @@
+%%{init: {'theme': 'base', 'themeVariables': {'fontFamily': 'Avenir Next, Helvetica Neue, sans-serif', 'fontSize': '15px', 'primaryColor': '#ffffff', 'primaryBorderColor': '#101418', 'primaryTextColor': '#101418', 'lineColor': '#101418', 'clusterBkg': '#f7f8fa', 'clusterBorder': '#c3cad3'}}}%%
+flowchart LR
+  A["<b>Describe</b><br/>paper, notes, CSV<br/>plain language, JA or EN"] --> B{"<b>Safety gate</b><br/>PHI · citations<br/>numbers · COI"}
+  B -->|"pass"| C["<b>Deck generated</b><br/>standalone HTML<br/>verified charts"]
+  B -->|"stop"| D["<b>Asks first</b><br/>SOURCE NOT PROVIDED<br/>never invents facts"]
+  C --> E["<b>Present as-is</b>"]
+  E --> E1["Browser talk<br/>arrow keys · Home/End"]
+  E --> E2["PDF handout<br/>one slide per page"]
+  E --> E3["Fully offline<br/>no venue Wi-Fi needed"]
+
+  style B stroke:#101418,stroke-width:2.5px
+  style D fill:#101418,color:#fff,stroke:#101418
+  style E fill:#1a5fb4,color:#fff,stroke:#1a5fb4
+  style E1 fill:#f7f8fa,stroke:#c3cad3
+  style E2 fill:#f7f8fa,stroke:#c3cad3
+  style E3 fill:#f7f8fa,stroke:#c3cad3

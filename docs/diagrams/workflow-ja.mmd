@@ -1,0 +1,16 @@
+%%{init: {'theme': 'base', 'themeVariables': {'fontFamily': 'Avenir Next, Hiragino Kaku Gothic ProN, sans-serif', 'fontSize': '15px', 'primaryColor': '#ffffff', 'primaryBorderColor': '#101418', 'primaryTextColor': '#101418', 'lineColor': '#101418', 'clusterBkg': '#f7f8fa', 'clusterBorder': '#c3cad3'}}}%%
+flowchart LR
+  A["<b>依頼する</b><br/>論文・メモ・CSV<br/>自然文・日英どちらでも"] --> B{"<b>安全ゲート</b><br/>PHI・引用<br/>数値・COI"}
+  B -->|"通過"| C["<b>デッキ生成</b><br/>スタンドアロン HTML<br/>検証済みチャート"]
+  B -->|"停止"| D["<b>確認を返す</b><br/>SOURCE NOT PROVIDED<br/>事実を捏造しない"]
+  C --> E["<b>そのままプレゼン</b>"]
+  E --> E1["ブラウザ発表<br/>←→ キー操作"]
+  E --> E2["PDF 印刷<br/>1スライド1ページ"]
+  E --> E3["完全オフライン<br/>会場のネット不要"]
+
+  style B stroke:#101418,stroke-width:2.5px
+  style D fill:#101418,color:#fff,stroke:#101418
+  style E fill:#1a5fb4,color:#fff,stroke:#1a5fb4
+  style E1 fill:#f7f8fa,stroke:#c3cad3
+  style E2 fill:#f7f8fa,stroke:#c3cad3
+  style E3 fill:#f7f8fa,stroke:#c3cad3
